@@ -1,0 +1,9 @@
+8986bad00db1823b241e4898603093cd7c3119b7 4249
+4ee91223d962b636727f7fc25b3afbdcf91a0cc2 o default
+87cb463124a600f17efa43cad7e55eef2c687768 o feature-freeze
+f5dd230b481cca7c36fd6a1544a2cb837ae3b432 c jhallas/corrected-virtualaddresseditor-so-that-i-1390511560038
+8986bad00db1823b241e4898603093cd7c3119b7 o no_shared_data
+08ef8c96358966256e16883bf8f2f86bb8ba64b1 o python3.3
+56659b93e4271704f2b85aa136aaf57ebb73ade7 o release
+efacecdffbea1bf909c422a7487af5adf36cf8a0 o sqlalchemy-8.0.0
+e950ef877387cd62f09c38e79cf3feb2a5d57614 o stable

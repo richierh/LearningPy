@@ -1,0 +1,8 @@
+Start a project
+
+# This will create django container folder.
+django-admin startproject <name project>
+
+# Start to make an app Folder , you can use more than 1 apps in one django container folder
+
+python manage.py startapp <name app>

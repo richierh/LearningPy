@@ -1,0 +1,34 @@
+# Setup.py
+*.egg
+*egg-info
+
+# Documentation
+build
+dist
+.Python
+
+# Testing
+.coverage
+
+# Compiled
+*.pyc
+
+# Temp vim files
+*.swp
+*.swo
+
+#Rope project temps
+.ropeproject/
+*.sublime-project
+*.sublime-workspace
+
+#db
+*.db
+*.sqlite
+
+# OS generated files 
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
