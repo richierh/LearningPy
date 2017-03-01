@@ -49,3 +49,15 @@ class MyFrame1 ( wx.Frame ):
 
 	def __del__( self ):
 		pass
+
+
+
+class motherframe():
+	root = wx.App(True)
+	a = MyFrame1(None)
+	a.Show(True)
+	root.MainLoop()
+
+
+if __name__ == '__main__':
+    Frame = motherframe(None)
