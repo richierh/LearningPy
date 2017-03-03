@@ -22,12 +22,19 @@ set vTcl(active_menu_fg) #000000
 if {[info exists vTcl(sourcing)]} {
 
 proc vTcl:project:info {} {
+<<<<<<< HEAD
     set base .top39
+=======
+    set base .top37
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
     namespace eval ::widgets::$base {
         set dflt,origin 0
         set runvisible 1
     }
+<<<<<<< HEAD
     set site_3_0 $base.m40
+=======
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
     namespace eval ::widgets_bindings {
         set tagslist _TopLevel
     }
@@ -49,9 +56,15 @@ proc vTcl:project:info {} {
 # GENERATED GUI PROCEDURES
 #
 
+<<<<<<< HEAD
 proc vTclWindow.top39 {base} {
     if {$base == ""} {
         set base .top39
+=======
+proc vTclWindow.top37 {base} {
+    if {$base == ""} {
+        set base .top37
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
     }
     if {[winfo exists $base]} {
         wm deiconify $base; return
@@ -61,9 +74,15 @@ proc vTclWindow.top39 {base} {
     # CREATING WIDGETS
     ###################
     vTcl::widgets::core::toplevel::createCmd $top -class Toplevel \
+<<<<<<< HEAD
         -menu "$top.m40" -background {#d9d9d9} 
     wm focusmodel $top passive
     wm geometry $top 600x450+400+187
+=======
+        -background {#d9d9d9} 
+    wm focusmodel $top passive
+    wm geometry $top 600x450+650+150
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
     update
     # set in toplevel.wgt.
     global vTcl
@@ -75,6 +94,7 @@ proc vTclWindow.top39 {base} {
     wm deiconify $top
     wm title $top "New Toplevel 1"
     vTcl:DefineAlias "$top" "Toplevel1" vTcl:Toplevel:WidgetProc "" 1
+<<<<<<< HEAD
     menu $top.m40 \
         -activebackground {#d8d8d8} -activeforeground {#000000} \
         -background {#d9d9d9} -font TkMenuFont -foreground {#000000} \
@@ -91,6 +111,8 @@ proc vTclWindow.top39 {base} {
         -activebackground {#d8d8d8} -activeforeground {#000000} \
         -background {#d9d9d9} -command {# TODO} -font TkMenuFont \
         -foreground {#000000} -label Keluar/Exit 
+=======
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
     ###################
     # SETTING GEOMETRY
     ###################
@@ -116,5 +138,9 @@ bind "_TopLevel" <Destroy> {
 }
 
 Window show .
+<<<<<<< HEAD
 Window show .top39
+=======
+Window show .top37
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
 

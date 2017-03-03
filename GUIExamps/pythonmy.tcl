@@ -24,6 +24,7 @@ if {[info exists vTcl(sourcing)]} {
 proc vTcl:project:info {} {
     set base .top39
     namespace eval ::widgets::$base {
+<<<<<<< HEAD
         set dflt,origin 1
         set runvisible 1
     }
@@ -32,6 +33,12 @@ proc vTcl:project:info {} {
     set site_5_0 .top39.tFr41.tNo44.pg0 
     set site_5_0 $site_5_0
     set site_5_1 .top39.tFr41.tNo44.pg1 
+=======
+        set dflt,origin 0
+        set runvisible 1
+    }
+    set site_3_0 $base.m40
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
     namespace eval ::widgets_bindings {
         set tagslist _TopLevel
     }
@@ -65,6 +72,7 @@ proc vTclWindow.top39 {base} {
     # CREATING WIDGETS
     ###################
     vTcl::widgets::core::toplevel::createCmd $top -class Toplevel \
+<<<<<<< HEAD
         -menu "$top.m40" -background {#d9d9d9} -highlightcolor black 
     wm focusmodel $top passive
     wm geometry $top 605x454
@@ -72,6 +80,15 @@ proc vTclWindow.top39 {base} {
     # set in toplevel.wgt.
     global vTcl
     set vTcl(save,dflt,origin) 1
+=======
+        -menu "$top.m40" -background {#d9d9d9} 
+    wm focusmodel $top passive
+    wm geometry $top 600x450+400+187
+    update
+    # set in toplevel.wgt.
+    global vTcl
+    set vTcl(save,dflt,origin) 0
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
     wm maxsize $top 1265 738
     wm minsize $top 1 1
     wm overrideredirect $top 0
@@ -85,8 +102,13 @@ proc vTclWindow.top39 {base} {
         -tearoff 0 
     $top.m40 add cascade \
         -menu "$top.m40.men41" -activebackground {#d9d9d9} \
+<<<<<<< HEAD
         -activeforeground {#000000} -background {#d9d9d9} -font TkMenuFont \
         -foreground {#000000} -label {Bilah utama} 
+=======
+        -activeforeground {#000000} -background {#d9d9d9} -command {} \
+        -font TkMenuFont -foreground {#000000} -label {Bilah utama} 
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
     set site_3_0 $top.m40
     menu $site_3_0.men41 \
         -activebackground {#f9f9f9} -activeforeground black \
@@ -95,6 +117,7 @@ proc vTclWindow.top39 {base} {
         -activebackground {#d8d8d8} -activeforeground {#000000} \
         -background {#d9d9d9} -command {# TODO} -font TkMenuFont \
         -foreground {#000000} -label Keluar/Exit 
+<<<<<<< HEAD
     ttk::style configure TFrame -background #d9d9d9
     ttk::frame $top.tFr41 \
         -borderwidth 2 -relief groove -width 585 -height 435 
@@ -153,6 +176,11 @@ proc vTclWindow.top39 {base} {
     place $top.tFr41 \
         -in $top -x 10 -y 10 -width 585 -relwidth 0 -height 435 -relheight 0 \
         -anchor nw -bordermode ignore 
+=======
+    ###################
+    # SETTING GEOMETRY
+    ###################
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
 
     vTcl:FireEvent $base <<Ready>>
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 appdirs==1.4.0
 Django==1.10.5
 django-classy-tags==0.8.0
@@ -9,3 +10,35 @@ djangocms-admin-style==1.2.6.2
 packaging==16.8
 pyparsing==2.1.10
 six==1.10.0
+=======
+cmsplugin-filer==1.1.3
+dj-database-url==0.4.1
+Django==1.8.16
+django-appconf==1.0.2
+django-classy-tags==0.8.0
+django-cms==3.4.1
+django-filer==1.2.5
+django-formtools==1.0
+django-mptt==0.8.6
+django-polymorphic==0.8.1
+django-sekizai==0.10.0
+Django-Select2==4.3.2
+django-treebeard==4.0.1
+djangocms-admin-style==1.2.6
+djangocms-attributes-field==0.1.2
+djangocms-column==1.7.0
+djangocms-googlemap==0.5.2
+djangocms-installer==0.9.1
+djangocms-link==2.0.2
+djangocms-snippet==1.9.1
+djangocms-style==1.7.0
+djangocms-text-ckeditor==3.3.1
+djangocms-video==2.0.2
+easy-thumbnails==2.3
+html5lib==0.9999999
+Pillow==3.4.2
+pytz==2016.7
+six==1.10.0
+tzlocal==1.3
+Unidecode==0.4.19
+>>>>>>> 58be5f9ec59c4f9183569d54f3b23562397fe242
