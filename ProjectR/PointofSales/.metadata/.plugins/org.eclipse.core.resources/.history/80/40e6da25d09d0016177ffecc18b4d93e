@@ -1,0 +1,27 @@
+# Ini adalah script python untuk membuat point of sales
+
+
+
+class DB():
+    def __init__(self):
+        self.inputkode = raw_input("masukkan kode\n")        
+        self.inputbarang = raw_input("masukkan barang\n")
+        self.inputsatuan = raw_input("masukkan satuan\n")
+        self.inputkuantiti = raw_input("masukkan kuantiti\n")
+        self.inputhjual = input("masukkan harga jual\n")
+        self.inputbeli = input ("masukkan harga beli\n")
+        
+    def get(self):
+        
+        for i in [self.inputkode,self.inputbarang,
+                  self.inputsatuan,self.inputkuantiti,
+                  self.inputhjual,self.inputbeli]:
+            print i
+                        
+    
+
+if __name__=="__main__":
+    print "hello"
+    DB()
+    DB().get()
+    

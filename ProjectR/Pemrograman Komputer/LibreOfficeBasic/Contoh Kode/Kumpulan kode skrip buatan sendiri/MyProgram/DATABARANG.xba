@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="DATABARANG" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Main
+
+End Sub
+
+
+sub ENTRI_DATA_BARANG
+rem ----------------------------------------------------------------------
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem-------------------------------Show Data Barang
+dim args16(0) as new com.sun.star.beans.PropertyValue
+args16(0).Name = &quot;aTableName&quot;
+args16(0).Value = &quot;DATA BARANG&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:Show&quot;, &quot;&quot;, 0, args16())
+rem------UnProtectsheet
+ThisComponent.Sheets.GetByName(&quot;DATA BARANG&quot;).UnProtect &quot;cccc&quot;
+
+rem moving to DATA BARANG and point to A2:J:2
+dim args10(0) as new com.sun.star.beans.PropertyValue
+args10(0).Name = &quot;ToPoint&quot;
+args10(0).Value= &quot;DATA BARANG.$A$2:$k$2&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args10())
+rem----------------------------------------INSERT CELL SELECTED
+dim args15(0) as new com.sun.star.beans.PropertyValue
+args15(0).Name = &quot;Flags&quot;
+args15(0).Value = &quot;V&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:InsertCell&quot;, &quot;&quot;, 0, args15())
+rem ----------------------------------------------------------------------
+dim args3(0) as new com.sun.star.beans.PropertyValue
+args3(0).Name = &quot;ToPoint&quot;
+args3(0).Value = &quot;$R$1:$AB$1&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args3())
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:Copy&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+dim args6(0) as new com.sun.star.beans.PropertyValue
+args6(0).Name = &quot;ToPoint&quot;
+args6(0).Value = &quot;$A$2&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args6())
+
+rem ----------------------------------------------------------------------
+dim args7(5) as new com.sun.star.beans.PropertyValue
+args7(0).Name = &quot;Flags&quot;
+args7(0).Value = &quot;SVDNT&quot;
+args7(1).Name = &quot;FormulaCommand&quot;
+args7(1).Value = 0
+args7(2).Name = &quot;SkipEmptyCells&quot;
+args7(2).Value = false
+args7(3).Name = &quot;Transpose&quot;
+args7(3).Value = false
+args7(4).Name = &quot;AsLink&quot;
+args7(4).Value = false
+args7(5).Name = &quot;MoveMode&quot;
+args7(5).Value = 4
+
+dispatcher.executeDispatch(document, &quot;.uno:InsertContents&quot;, &quot;&quot;, 0, args7())
+dispatcher.executeDispatch(document, &quot;.uno:ChangeCaseToUpper&quot;, &quot;&quot;, 0, Array())
+rem ----------------------------------------------------------------------
+dim args11(0) as new com.sun.star.beans.PropertyValue
+args11(0).Name = &quot;ToPoint&quot;
+args11(0).Value = &quot;$s$1:$Z$1&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args11())
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:ClearContents&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+dim args12(0) as new com.sun.star.beans.PropertyValue
+args12(0).Name = &quot;ToPoint&quot;
+args12(0).Value = &quot;$Q$1&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args12())
+
+dim args17(0) as new com.sun.star.beans.PropertyValue
+args17(0).Name = &quot;ToPoint&quot;
+args17(0).Value = &quot;$A$2:$k$2&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args17())
+
+rem ----------------------------------------------------------------------
+dim args8(12) as new com.sun.star.beans.PropertyValue
+args8(0).Name = &quot;OuterBorder.LeftBorder&quot;
+args8(0).Value = Array(0,0,2,0,0,2)
+args8(1).Name = &quot;OuterBorder.LeftDistance&quot;
+args8(1).Value = 0
+args8(2).Name = &quot;OuterBorder.RightBorder&quot;
+args8(2).Value = Array(0,0,2,0,0,2)
+args8(3).Name = &quot;OuterBorder.RightDistance&quot;
+args8(3).Value = 0
+args8(4).Name = &quot;OuterBorder.TopBorder&quot;
+args8(4).Value = Array(0,0,2,0,0,2)
+args8(5).Name = &quot;OuterBorder.TopDistance&quot;
+args8(5).Value = 0
+args8(6).Name = &quot;OuterBorder.BottomBorder&quot;
+args8(6).Value = Array(0,0,2,0,0,2)
+args8(7).Name = &quot;OuterBorder.BottomDistance&quot;
+args8(7).Value = 0
+args8(8).Name = &quot;InnerBorder.Horizontal&quot;
+args8(8).Value = Array(0,0,2,0,0,2)
+args8(9).Name = &quot;InnerBorder.Vertical&quot;
+args8(9).Value = Array(0,0,2,0,0,2)
+args8(10).Name = &quot;InnerBorder.Flags&quot;
+args8(10).Value = 0
+args8(11).Name = &quot;InnerBorder.ValidFlags&quot;
+args8(11).Value = 127
+args8(12).Name = &quot;InnerBorder.DefaultDistance&quot;
+args8(12).Value = 0
+
+dispatcher.executeDispatch(document, &quot;.uno:SetBorderStyle&quot;, &quot;&quot;, 0, args8())
+rem
+rem-----
+dim args18(0) as new com.sun.star.beans.PropertyValue
+args18(0).Name = &quot;aTableName&quot;
+args18(0).Value = &quot;DATA BARANG&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:Hide&quot;, &quot;&quot;, 0, args18())
+rem-----
+dim args9(0) as new com.sun.star.beans.PropertyValue
+args9(0).Name = &quot;ToPoint&quot;
+args9(0).Value= &quot;TAMPILAN ANTAR MUKA.$A$1&quot;
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args9())
+
+rem-----
+ThisComponent.Sheets.GetByName(&quot;DATA BARANG&quot;).Protect &quot;cccc&quot;
+				
+
+end sub
+
+
+
+</script:module>

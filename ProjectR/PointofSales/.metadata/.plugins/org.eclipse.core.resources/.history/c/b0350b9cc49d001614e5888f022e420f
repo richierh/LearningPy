@@ -1,0 +1,27 @@
+# Ini adalah script python untuk membuat point of sales
+
+
+
+class DB(object):
+    def __init__(self):]
+        global kode
+        self.kode
+        self.namabarang
+        
+        
+        
+        pass
+    
+
+
+
+
+
+
+
+
+if __name__=="__main__":
+    print "hello"
+    DB()
+    
+

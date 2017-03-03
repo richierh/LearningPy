@@ -1,0 +1,29 @@
+{
+  "mainFile": "Data/Databarang.py", 
+  "use-tabs": false, 
+  "venv": "/home/richie/venv/project/bin/python", 
+  "relatedProjects": [], 
+  "name": "ProjectPOSCLI", 
+  "license": "GNU General Public License v3", 
+  "url": "", 
+  "pythonPath": "python", 
+  "preExecScript": "", 
+  "additional_builtins": [], 
+  "programParams": "", 
+  "indentation": 4, 
+  "PYTHONPATH": "", 
+  "supported-extensions": [
+    ".py", 
+    ".html", 
+    ".jpg", 
+    ".png", 
+    ".ui", 
+    ".css", 
+    ".json", 
+    ".js", 
+    ".ini"
+  ], 
+  "project-type": "", 
+  "postExecScript": "", 
+  "description": ""
+}

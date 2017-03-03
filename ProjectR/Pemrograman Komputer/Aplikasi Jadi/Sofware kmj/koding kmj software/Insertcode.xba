@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Insertcode" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Main
+
+End Sub
+
+
+sub Insert
+    Dim Doc As Object
+    Dim oSheet As Object
+    Dim NamedRange as Object
+    Dim oCellRange as Object
+    Dim oRangeAddress as Object
+    Dim RowIndex as Integer
+    Dim Referredcells as object
+    
+thiscomponent.Sheets.Getbyname(&quot;Data Barang&quot;).UnProtect (&quot;&quot;)
+            oDoc = ThisComponent
+       
+            &apos;get named range:   
+            NamedRange = ThisComponent.Sheets.getByName(&quot;Data Barang&quot;)
+            
+			&apos;get row index of the named cell (or the first cell of the named cellrange)
+            RowIndex = NamedRange.getCellByPosition(12,12).getCellAddress().Row 
+            
+
+            &apos;get number of the sheet of the named cell (or cellrange):
+            oRangeAddress = NamedRange.RangeAddress 
+            SheetNumber = oRangeAddress.Sheet
+
+            &apos;get sheet:   
+            oSheet = oDoc.Sheets(SheetNumber)
+       
+           &apos;insert a row:
+       		oSheet.Rows.insertByIndex(RowIndex,1)
+
+Doc = ThisComponent
+   Sheets = Doc.Sheets()
+   SheetCopy = Sheets.getByName(&quot;Data Barang&quot;)
+   SheetPaste = Sheets.getByName(&quot;Data Barang&quot;)
+   CopyRange = SheetCopy.getCellRangeByName(&quot;A1:J1&quot;)
+   PasteRange = SheetPaste.getCellRangeByName(&quot;a13:j13&quot;)
+   PasteRange.DataArray = CopyRange.DataArray
+Dim p As New com.sun.star.util.CellProtection
+Dim Locked as object   
+Locked = Thiscomponent.sheets(&quot;Data Barang&quot;).GetCellRangeByName(&quot;A10:J10&quot;)
+
+p.islocked= true   
+   p=Locked.Cellprotection
+End Sub
+
+
+Sub ChangeCaseToUpper
+dim document   as object
+dim dispatcher as object
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+Dim oSheet, oRange, oCell, oController,oFrame
+oController = ThisComponent.getCurrentController()
+
+oFrame = oController.getFrame()
+oFrame.activate()
+
+oSheet = ThisComponent.Sheets(&quot;Data Barang&quot;)
+oRange = oSheet.getCellRangeByname(&quot;A11:j11&quot;)
+
+dispatcher.executeDispatch(document, &quot;.uno:ChangeCaseToUpper&quot;, &quot;&quot;, 0, Array())
+End Sub
+
+
+
+
+sub insert_2
+Dim Doc As Object
+Dim Sheet As Object
+Dim CellRangeAddress As New com.sun.star.table.CellRangeAddress
+Dim CellAddress As New com.sun.star.table.CellAddress
+ 
+Doc = ThisComponent
+Sheet = Doc.Sheets(0)
+ 
+CellRangeAddress.Sheet = 0
+CellRangeAddress.StartColumn = 0
+CellRangeAddress.StartRow = 0
+CellRangeAddress.EndColumn = 2
+CellRangeAddress.EndRow = 1
+ 
+CellAddress.Sheet = 0
+CellAddress.Column = 0
+CellAddress.Row = 10
+ 
+Sheet.moveRange(CellAddress, CellRangeAddress)
+
+end sub
+
+Sub Insert_Data_Barang
+
+Dim Doc As Object
+Dim Sheet As Object
+Dim namas as string
+Dim CellRangeAddress As New com.sun.star.table.CellRangeAddress
+Dim CellAddress As New com.sun.star.table.CellAddress
+ 
+Doc = ThisComponent
+Sheet = Doc.Sheets(&quot;Data Barang&quot;)
+
+Doc.CurrentController.setactivesheet(Sheet)
+ 
+
+CellRangeAddress.StartColumn = 1
+CellRangeAddress.StartRow = 1
+CellRangeAddress.EndColumn = 2
+CellRangeAddress.EndRow = 2
+ 
+CellAddress.Sheet = 0
+CellAddress.Column = 0
+CellAddress.Row = 5
+ 
+Sheet.moveRange(CellAddress, CellRangeAddress)
+
+end sub
+
+    Sub MyInsertRow_2
+
+    Dim Doc As Object
+    Dim oSheet As Object
+    Dim NamedRange as Object
+    Dim oCellRange as Object
+    Dim oRangeAddress as Object
+    Dim RowIndex as Integer
+    Dim Referredcells as object
+
+            oDoc = ThisComponent
+       
+            &apos;get named range:   
+            NamedRange = ThisComponent.Sheets.getByName(&quot;Data Barang&quot;)
+            
+			&apos;get row index of the named cell (or the first cell of the named cellrange)
+            RowIndex = NamedRange.getCellByPosition(0,0).getCellAddress().Row 
+            
+
+            &apos;get number of the sheet of the named cell (or cellrange):
+            oRangeAddress = NamedRange.RangeAddress (&quot;A11:B11&quot;)
+            SheetNumber = oRangeAddress.Sheet
+
+            &apos;get sheet:   
+            oSheet = oDoc.Sheets(SheetNumber)
+       
+           &apos;insert a row:
+       oSheet.Rows.insertByIndex(RowIndex,1)
+
+    End Sub
+
+    
+     Sub MyInsertRow_1
+
+    Dim oDoc As Object
+    Dim oSheet As Object
+
+    Dim oCellRange As Object
+    Dim rowsSelected As Long
+    Dim rowIndex As Long
+
+
+       oDoc = ThisComponent
+       oSheet = oDoc.getCurrentController().ActiveSheet
+
+       oCellRange    = ThisComponent.getCurrentSelection()
+       rowsSelected  = oCellRange.Rows.GetCount()
+       rowIndex = oCellRange.getCellByPosition(0,0).getCellAddress().Row 
+
+       oSheet.Rows.insertByIndex(rowIndex,1)
+
+    End Sub
+
+
+
+
+</script:module>

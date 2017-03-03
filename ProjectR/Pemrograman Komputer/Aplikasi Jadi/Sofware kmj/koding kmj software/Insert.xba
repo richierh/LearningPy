@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Insert" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Main
+
+End Sub
+
+sub Insert
+    Dim Doc As Object
+    Dim oSheet As Object
+    Dim NamedRange as Object
+    Dim oCellRange as Object
+    Dim oRangeAddress as Object
+    Dim RowIndex as Integer
+    Dim Referredcells as object
+    
+thiscomponent.Sheets.Getbyname(&quot;Data Barang&quot;).UnProtect (&quot;&quot;)
+            oDoc = ThisComponent
+       
+            &apos;get named range:   
+            NamedRange = ThisComponent.Sheets.getByName(&quot;Data Barang&quot;)
+            
+			&apos;get row index of the named cell (or the first cell of the named cellrange)
+            RowIndex = NamedRange.getCellByPosition(1,11).getCellAddress().Row 
+            
+
+            &apos;get number of the sheet of the named cell (or cellrange):
+            oRangeAddress = NamedRange.RangeAddress 
+            SheetNumber = oRangeAddress.Sheet
+
+            &apos;get sheet:   
+            oSheet = oDoc.Sheets(SheetNumber)
+       
+           &apos;insert a row:
+       		oSheet.Rows.insertByIndex(RowIndex,1)
+
+Doc = ThisComponent
+   Sheets = Doc.Sheets()
+   SheetCopy = Sheets.getByName(&quot;Data Barang&quot;)
+   SheetPaste = Sheets.getByName(&quot;Data Barang&quot;)
+   CopyRange = SheetCopy.getCellRangeByName(&quot;$R$1:$AB$1&quot;)
+   PasteRange = SheetPaste.getCellRangeByName(&quot;$A$1:$J$1&quot;)
+   PasteRange.DataArray = CopyRange.DataArray
+   
+thiscomponent.Sheets.Getbyname(&quot;Data Barang&quot;).Protect (&quot;&quot;)
+
+END SUB
+</script:module>

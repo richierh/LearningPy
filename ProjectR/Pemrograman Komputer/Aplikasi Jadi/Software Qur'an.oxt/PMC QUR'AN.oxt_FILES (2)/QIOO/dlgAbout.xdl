@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dlg:window PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "dialog.dtd">
+<dlg:window xmlns:dlg="http://openoffice.org/2000/dialog" xmlns:script="http://openoffice.org/2000/script" dlg:style-id="2" dlg:id="dlgAbout" dlg:left="133" dlg:top="74" dlg:width="166" dlg:height="96" dlg:closeable="true" dlg:moveable="true" dlg:title="PMC Softwares">
+ <dlg:styles>
+  <dlg:style dlg:style-id="0" dlg:background-color="0xffffcc" dlg:font-height="11" dlg:font-weight="150"/>
+  <dlg:style dlg:style-id="1" dlg:background-color="0xccff99"/>
+  <dlg:style dlg:style-id="2" dlg:background-color="0xaecf00"/>
+ </dlg:styles>
+ <dlg:bulletinboard>
+  <dlg:text dlg:style-id="0" dlg:id="Label1" dlg:tab-index="0" dlg:left="1" dlg:top="3" dlg:width="162" dlg:height="11" dlg:value="Qur&apos;an in OpenOffice - QiOO" dlg:align="center"/>
+  <dlg:text dlg:style-id="1" dlg:id="Label2" dlg:tab-index="1" dlg:left="1" dlg:top="17" dlg:width="163" dlg:height="75" dlg:value="Sofwares Al-Qur&apos;an ini gratis , silahkan dipergunakan dengan sebaik-baiknya.&#x0a;&#x0a;&#x0a;Semoga bermanfaat" dlg:multiline="true"/>
+ </dlg:bulletinboard>
+</dlg:window>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Option" script:language="StarBasic">REM  *****  BASIC  *****
+Dim dlgOption AS Object
+
+Const hostPath= &quot;QIOO&quot;
+Const optionFile = &quot;/res/option.ini&quot;
+&apos;TODO: flexible list
+Const optionItem = 4
+Const keyFileTrans=&quot;file.translation=&quot;
+Const keyFonts=&quot;text.fonts=&quot;
+Const keyQuran=&quot;text.quran=&quot;
+Const keyTrans=&quot;text.trans=&quot;
+Const keyNewLine=&quot;text.newline=&quot;
+
+Sub Main
+
+End Sub
+
+Sub dlgOptionDisplay
+
+	dlgOption = LoadDialog(&quot;QIOO&quot;, &quot;DlgOption&quot;)
+	&apos;read configuration from file
+	updateOption()
+	dlgOption.Execute()
+	
+end sub
+
+Sub dlgOptionCancelBtn
+
+	rem close dialog
+	dlgOption.Endexecute()
+
+end sub
+
+Sub dlgOptionOKBtn
+
+
+	txtFileTrans = dlgOption.GetControl(&quot;fcTrans&quot;)
+	oCbFontSize = dlgOption.GetControl(&quot;cbFontSize&quot;)
+	ocNewLine = dlgOption.GetControl(&quot;ocNewLine&quot;)
+	ocbQuran = dlgOption.GetControl(&quot;cbQuran&quot;)
+	ocbTrans = dlgOption.GetControl(&quot;cbTrans&quot;)
+
+	&apos;write configuration to file
+	dim options(optionItem) as String
+	options(0)=keyFileTrans + txtFileTrans.Text
+	options(1)=keyFonts +oCbFontSize.text
+	options(2)=keyQuran + ocbQuran.State
+	options(3)=keyTrans + ocbTrans.State
+	options(4)=keyNewLine + ocNewLine.State
+	
+	writeOption(options)
+	rem close dialog
+	dlgOption.Endexecute()
+
+end sub
+
+Sub updateOption
+	
+	&apos;read file option as list
+	txtFileTrans = dlgOption.GetControl(&quot;fcTrans&quot;)
+	oCbFontSize = dlgOption.GetControl(&quot;cbFontSize&quot;)
+	ocNewLine = dlgOption.GetControl(&quot;ocNewLine&quot;)
+	ocbQuran = dlgOption.GetControl(&quot;cbQuran&quot;)
+	ocbTrans = dlgOption.GetControl(&quot;cbTrans&quot;)
+	
+	
+	dim options(optionItem) as String
+	options=readOption()
+	txtFileTrans.text=options(0)
+	oCbFontSize.text=options(1)
+	ocbQuran.State=options(2)
+	ocbTrans.State=options(3)
+	ocNewLine.State=options(4)
+	
+end sub
+
+sub writeOption(options)
+
+	fileName = getPackageLocation() &amp; &quot;/&quot; &amp; hostPath &amp; optionFile
+
+	f1 = FreeFile()
+  	Open fileName for output as #f1
+  	for i=0 to optionItem
+  		Print #f1, options(i)
+  	next
+  	
+  	
+  	Close #f1
+end sub
+
+function readOption()
+
+	fileName = getPackageLocation() &amp; &quot;/&quot; &amp; hostPath &amp; optionFile
+
+	If FileExists(fileName) then
+		dim options(optionItem) as String
+		
+		f1 = FreeFile()
+	  	Open fileName for input as #f1
+	  	for i=0 to optionItem
+	  		Line Input #f1, cLine
+	  		options(i)=cLine
+	  	next
+	  	
+	  	Close #f1
+	  		
+		options(0)=right(options(0),len(options(0))-len(keyFileTrans))
+		options(1)=right(options(1),len(options(1))-len(keyFonts))
+		options(2)=right(options(2),len(options(2))-len(keyQuran))
+		options(3)=right(options(3),len(options(3))-len(keyTrans))
+		options(4)=right(options(4),len(options(4))-len(keyNewLine))
+	  	
+	  	readOption = options
+	else  	
+		readOption = defaultOptions()
+	end if
+end function
+
+function defaultOptions()
+	dim options(optionItem) as String
+	
+	options(0)=&quot;Default Indonesia Translation&quot;
+	options(1)=&quot;20&quot;
+	options(2)=&quot;1&quot;
+	options(3)=&quot;0&quot;
+	options(4)=&quot;1&quot;
+	
+	defaultOptions = options
+	
+end function
+
+Sub dlgOptionDefaultBtn
+	txtFileTrans = dlgOption.GetControl(&quot;fcTrans&quot;)
+	oCbFontSize = dlgOption.GetControl(&quot;cbFontSize&quot;)
+	ocNewLine = dlgOption.GetControl(&quot;ocNewLine&quot;)
+	ocbQuran = dlgOption.GetControl(&quot;cbQuran&quot;)
+	ocbTrans = dlgOption.GetControl(&quot;cbTrans&quot;)
+	
+	
+	dim options(optionItem) as String
+	options=defaultOptions()
+	txtFileTrans.text=options(0)
+	oCbFontSize.text=options(1)
+	ocbQuran.State=options(2)
+	ocbTrans.State=options(3)
+	ocNewLine.State=options(4)
+end sub
+
+</script:module>
