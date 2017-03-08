@@ -51,7 +51,6 @@ class MyFrame1 ( wx.Frame ):
 		pass
 
 
-
 class motherframe():
 	root = wx.App(True)
 	a = MyFrame1(None)
