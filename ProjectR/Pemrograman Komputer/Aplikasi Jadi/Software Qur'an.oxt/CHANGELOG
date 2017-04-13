@@ -1,0 +1,31 @@
+*0.4b*
+  * add auto replace key quran [qs99:99-99a] and translation [qs99:99-99t]
+    eg: [qs1:1a] or [qs1:1-2a]
+  * update quran resource
+
+*0.303b*
+  * fix numbering fonts
+  * fix numbering order
+
+*0.302b*
+  * fix numbering bugs
+  * fix translation not showing
+  * fix default buttons
+  * new menu structure, for easy shortcut key binding to menu
+
+*0.301b*
+  * User preferences option added
+  * ability to read other translation file added
+
+*0.3b*
+  * Indonesian translation included
+
+*0.2b*
+  * Fix many small bugs
+
+*0.11b*
+  * Fix bug path windows
+  * Fix bug read file ayat unicode
+
+*0.1b*
+  * Standard Feature

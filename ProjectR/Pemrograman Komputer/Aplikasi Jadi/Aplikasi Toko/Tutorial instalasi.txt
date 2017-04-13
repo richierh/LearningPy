@@ -1,0 +1,11 @@
+instalasi libreoffice portable dan java portable .. misalkan di drive d:
+
+- buka aplikasi libreoffice yang sudah di install .. lalu cari file libreofficeportable.exe klik
+- buka tools - option - security - macro - setting ke low
+- buka tools - option - advanced - add - cari lokasi file java portable yang tadi diinstall
+  enable / klik java runtime environment.
+- buka tools - extension manager - add -- cari file trialcode.oxt lalu klik dan pasang selesai
+
+
+- buka file oneclicksoftware.ods dari libreofficeportable.exe (dari menu openfolder)
+  

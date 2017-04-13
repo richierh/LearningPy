@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="IFelsestatmentMacro" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Main
+
+End Sub
+
+Sub ExampleIfThenDate
+
+Dim sDate as String
+
+Dim sToday as String
+
+sDate = InputBox(&quot;Enter the expiration date (MM.DD.YYYY)&quot;)
+
+sDate = Right$(sDate, 4) + Mid$(sDate, 4, 2) + Left$(sDate, 2)
+
+sToday = Date$
+
+sToday = Right$(sToday, 4)+ Mid$(sToday, 4, 2) + Left$(sToday, 2)
+
+If sDate &lt; sToday Then
+
+MsgBox &quot;The expiration date has passed&quot;
+
+ElseIf sDate &gt; sToday Then
+
+MsgBox &quot;The expiration date has not yet passed&quot;
+
+Else
+
+MsgBox &quot;The expiration date is today&quot;
+
+End If
+
+End Sub
+</script:module>

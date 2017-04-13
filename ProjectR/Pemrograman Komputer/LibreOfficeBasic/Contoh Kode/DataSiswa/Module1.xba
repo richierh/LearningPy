@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Module1" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Main
+bukakunci
+insertmode
+kunci
+End Sub
+
+SUB lockedcell
+
+doc = thiscomponent
+p = doc.sheets.getbyname (&quot;InputDataSiswaBaru&quot;).getcellrangebyname (&quot;A50:T50&quot;)
+tUnProtect = createUnoStruct( &quot;com.sun.star.util.CellProtection&quot; )
+With tUnProtect
+   .IsFormulaHidden = true
+   .IsHidden = true
+   .IsLocked = true
+   .IsPrintHidden = true
+End With
+
+p.setPropertyValue(&quot;CellProtection&quot;, tUnProtect )
+
+end sub
+
+sub unlockedcell
+doc = thiscomponent
+p = doc.sheets.getbyname (&quot;InputDataSiswaBaru&quot;).getcellrangebyname (&quot;A50:T50&quot;)
+tUnProtect = createUnoStruct( &quot;com.sun.star.util.CellProtection&quot; )
+tUnProtect.IsFormulaHidden = false
+tUnProtect.IsHidden = false
+tUnProtect.IsLocked = false
+tUnProtect.IsPrintHidden = true
+
+p.setPropertyValue(&quot;CellProtection&quot;, tUnProtect )
+
+end sub
+
+
+REM KUNCI SHEET
+sub kunci
+doc=thiscomponent
+doc.Sheets.Getbyname (&quot;DataSiswa&quot;).protect &quot;&quot;
+end sub
+
+
+REM BUKA KUNCI SHEET
+sub bukakunci
+doc=thiscomponent
+doc.Sheets.Getbyname (&quot;DataSiswa&quot;).unprotect &quot;&quot;
+end sub
+
+sub insertmode REM INSERT DATA
+doc=thiscomponent
+oPasteSheet = doc.sheets.getByName(&quot;DataSiswa&quot;)
+pasteRng= oPasteSheet.getcellrangebyname (&quot;A4:T4&quot;)
+oPasteSheet.insertCells(pasteRng.RangeAddress, com.sun.star.sheet.CellInsertMode.DOWN)
+
+Paste = doc.Sheets.Getbyname (&quot;DataSiswa&quot;).getcellrangebyname (&quot;A4:T4&quot;)
+Copy  = doc.Sheets.Getbyname (&quot;DataProg&quot;).getcellrangebyname (&quot;A13:T13&quot;)
+paste.dataarray=copy.dataarray
+
+doc.sheets.getbyname (&quot;DataProg&quot;).getcellrangebyname (&quot;A13:T13&quot;).ClearContents (1 or 2 or 4 or 8 )
+end sub
+
+
+Sub Id
+
+doc=thiscomponent
+
+osheet = thiscomponent.Sheets().getbyname(&quot;DataTipeID&quot;).getcellrangebyname(&quot;A1&quot;)
+dataid = osheet.value
+
+end sub
+
+REM KEMBALI KE HALAMAN 
+Sub KembalikeHalaman
+
+doc=thiscomponent
+Sheets = doc.Sheets().getbyname(&quot;Dataprog&quot;).getcellrangebyname(&quot;$j$2&quot;)
+Kos=Sheets.string
+if not (Kos = &quot;&quot;)then 
+oSheet = doc.sheets.getbyname(&quot;Halaman&quot;)
+Activesheet = doc.currentcontroller
+Activesheet.setactivesheet(oSheet)
+else
+
+end if
+
+End sub
+
+Sub Logout
+REM ------------------------LOGOUT
+dim L as integer
+doc = thiscomponent
+
+Sheetr = doc.getsheets().getbyname (&quot;Dataprog&quot;).getcellrangebyname (&quot;j2&quot;) rem-----get data A4
+
+if not (Sheetr.string = &quot;&quot; )then 
+Nor = Sheetr.String rem -------get A4 on string data type
+L = MsgBox (&quot;Anda Akan Logout dari , &quot; &amp; Nor &amp; &quot; ? &quot; ,4, &quot;Logout Menu&quot; )
+Select case L
+case 6
+oSheet = doc.sheets.getbyname(&quot;Hal_Login&quot;)
+Activesheet = doc.currentcontroller
+Activesheet.setactivesheet(oSheet)
+doc.getsheets().getbyname (&quot;Dataprog&quot;).getcellrangebyname (&quot;j2:l2&quot;).ClearContents (1 or 4 or 8)
+case 7
+end select
+else
+msgbox (&quot;Anda sudah logout&quot;,,&quot;Menu&quot;)
+end if
+End Sub
+
+Sub UPPERCASE (oEv as variant) 
+oEv.Source.Text = UCase( oEv.Source.Text )
+exit sub
+end sub
+ 
+</script:module>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="SearchReplace" script:language="StarBasic">REM  *****  BASIC  *****
+&apos;Only support Quran text ([qs1:1-7a])or Translation text ([qs1:1-7t])for now 
+&apos;combined key support will be added later
+
+dim t(100,3) as string 
+dim tval as integer
+
+Sub Main
+	searchAndReplaceKey()
+
+End Sub
+
+sub searchAndReplaceKey
+&apos;regex for [qs1:1-7atn]
+&apos;\[qs[^\[]+\]
+
+	Dim searchDesc As Object
+	Dim doc As Object
+
+	&apos;read default option
+	options=readOption()
+	
+	doc = ThisComponent
+	searchDesc = Doc.createSearchDescriptor
+	searchDesc.SearchRegularExpression=true
+	searchDesc.SearchString=&quot;\[qs[^\[]+\]&quot; 
+	
+	found = doc.findFirst (SearchDesc)
+	
+	Do While Not IsNull(found)
+
+		found.string = getKeySAR(found.String)
+		
+		&apos;if translation, don&apos;t change fonts
+		if (instr(found.string,&quot;t&quot;)=0) then
+			found.charFontName=&quot;Scheherazade&quot;
+			found.charFontNameAsian=&quot;Scheherazade&quot;
+			found.charFontNameComplex=&quot;Scheherazade&quot;
+			found.charHeight=val(options(1))
+			found.charHeightAsian=val(options(1))
+			found.charHeightComplex=val(options(1))
+			&apos;options(1)
+		end if
+				
+		found = doc.findNext( found.End, searchDesc)
+	Loop
+	
+end Sub
+
+function getKeySAR(key as string)
+
+	&apos;surat
+	i = instr(key,&quot;:&quot;)
+	suratNo= mid(key,2,i)
+		
+	&apos;check is translation ?
+	dim t as integer
+	t = instr(key,&quot;t&quot;)
+	trans =  t &gt; 0
+	
+	&apos;ayat
+	a = instr(key,&quot;a&quot;)
+	&apos;translation only ?
+	if (a=0) then
+		a=t
+	else
+		&apos;combined key not supported yet
+		trans=false
+	end if 
+	
+	m = instr(key,&quot;-&quot;)
+	if (m&gt;0) then
+		ayatBegin = mid(key,i+1,m-1)
+		ayatEnd = mid(key,m+1,a-1)
+	else
+		ayatBegin = mid(key,i+1,a-1)
+		ayatEnd=ayatBegin
+	end if
+	
+	strProc=&quot;&quot;
+
+	if (trans) then
+		ayatList = getAyatTransList(suratNo,ayatBegin,ayatEnd)
+		strProc= combineList(ayatList,ayatBegin,ayatEnd,trans)
+	else
+		ayatList = getAyatList(suratNo,ayatBegin,ayatEnd)
+		strProc = combineListArabic(ayatList,ayatBegin,ayatEnd,trans)
+	end if
+	
+	getKeySAR=strProc
+	
+end function
+
+function combineListArabic(list ,startList as integer, endList as integer,trans as string)
+
+	strProc=&quot;&quot;
+	i=0
+	lPrnt=chr(64831)
+	rPrnt=chr(64830)
+	for j=startList to endList-1
+		strProc= strProc &amp; list(i) &amp; lPrnt &amp; number(j) &amp; rPrnt		
+		i=i+1
+	next
+	
+	&apos;trick for last text left parentheses
+	strProc= rPrnt &amp; strProc &amp; list(i) &amp; lPrnt &amp; number(j)
+	
+	combineListArabic= strProc 
+end function
+
+
+function combineList(list ,startList as integer, endList as integer,trans as string)
+
+	strProc=&quot;&quot;
+	i=0
+	lPrnt=&quot;(&quot;
+	rPrnt=&quot;)&quot;
+	for j=startList to endList
+		strProc= strProc &amp; lPrnt &amp; j &amp; rPrnt &amp; list(i) 
+		i=i+1
+	next
+	
+	combineList= strProc 
+
+end function
+</script:module>

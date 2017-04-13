@@ -1,0 +1,17 @@
+﻿Tutorial instalais Aplikasi Toko
+
+Instalasi awal :
+
+1. Install File LibreOfficePortable_5.0.2_MultilingualStandard.paf.exe , ada dalam cd
+2. Tentukan lokasi penginstalan, usahakan di drive d:
+3. Install jPortable_8_Update_66.paf.exe, ada didalam cd
+4. Tentukan lokasi penginstalan
+5. Buka file folder LibreofficePortable yang habis diinstall tadi, cari file Libreoffice.exe lalu buka
+6. Klik Tools --- Options, lalu klik security , setelah itu klik Macro security lalu atur ditingkat Low selesai
+7. Klik Tool --- Options lalu klik advanced , beri tanda centang pada 'use java runtime environment', klik add ----maka akan muncul halaman box, arahkan pada folder Java (hasil Install pada point 3 Jportable tadi), klik ok..
+8. beri tanda centang juga pada Oracle Corporation 1.8 .xxx
+9. Selesai
+
+Cara buka softwarenya :
+1. Buka file Libreoffice.exe
+2. klik open file, cari file software nya (“aplikasi toko.exe”) klik.. dan software pun akan terbuka

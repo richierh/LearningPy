@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Insert_Data" script:language="StarBasic">REM  *****  BASIC  *****
+
+
+
+sub Main
+
+
+
+end sub
+
+sub clear2
+rem ----------------------------------------------------------------------
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem ----------------------------------------------------------------------
+dim args1(0) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;ToPoint&quot;
+args1(0).Value = &quot;$A$29:$D$30&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args1())
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:ClearContents&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+dim args3(0) as new com.sun.star.beans.PropertyValue
+args3(0).Name = &quot;ToPoint&quot;
+args3(0).Value = &quot;$B$30&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args3())
+
+rem ----------------------------------------------------------------------
+dim args4(0) as new com.sun.star.beans.PropertyValue
+args4(0).Name = &quot;ToPoint&quot;
+args4(0).Value = &quot;$A$28:$D$30&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args4())
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:ClearContents&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+rem dispatcher.executeDispatch(document, &quot;.uno:DeleteCell&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+dim args7(0) as new com.sun.star.beans.PropertyValue
+args7(0).Name = &quot;Flags&quot;
+args7(0).Value = &quot;SVDFN&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:Delete&quot;, &quot;&quot;, 0, args7())
+
+
+end sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+sub insert
+rem ----------------------------------------------------------------------
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem ----------------------------------------------------------------------
+dim args1(0) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;ToPoint&quot;
+args1(0).Value = &quot;$A$11:$B$11&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args1())
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:Copy&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+dim args3(0) as new com.sun.star.beans.PropertyValue
+args3(0).Name = &quot;ToPoint&quot;
+args3(0).Value = &quot;$A$14&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args3())
+
+rem ----------------------------------------------------------------------
+dim args4(5) as new com.sun.star.beans.PropertyValue
+args4(0).Name = &quot;Flags&quot;
+args4(0).Value = &quot;SVDNT&quot;
+args4(1).Name = &quot;FormulaCommand&quot;
+args4(1).Value = 0
+args4(2).Name = &quot;SkipEmptyCells&quot;
+args4(2).Value = false
+args4(3).Name = &quot;Transpose&quot;
+args4(3).Value = false
+args4(4).Name = &quot;AsLink&quot;
+args4(4).Value = false
+args4(5).Name = &quot;MoveMode&quot;
+args4(5).Value = 4
+
+dispatcher.executeDispatch(document, &quot;.uno:InsertContents&quot;, &quot;&quot;, 0, args4())
+
+rem ----------------------------------------------------------------------
+dim args5(0) as new com.sun.star.beans.PropertyValue
+args5(0).Name = &quot;ToPoint&quot;
+args5(0).Value = &quot;$A$11:$B$11&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args5())
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:ClearContents&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+dim args7(1) as new com.sun.star.beans.PropertyValue
+args7(0).Name = &quot;By&quot;
+args7(0).Value = 1
+args7(1).Name = &quot;Sel&quot;
+args7(1).Value = false
+
+dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args7())
+
+
+end sub
+
+sub clear
+rem ----------------------------------------------------------------------
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem ----------------------------------------------------------------------
+rem dispatcher.executeDispatch(document, &quot;.uno:Delete&quot;, &quot;&quot;, 0, Array())
+
+
+end sub
+</script:module>

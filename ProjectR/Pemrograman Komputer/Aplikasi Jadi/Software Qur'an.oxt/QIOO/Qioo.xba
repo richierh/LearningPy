@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Qioo" script:language="StarBasic">REM  *****  BASIC  *****
+Dim dlgChooseSurah as Object
+Global transFile as String
+Const optionItem = 4
+Sub Main
+	dlgAboutDisplay
+End Sub
+
+
+Function loadDialog(Libname as String, DialogName as String, Optional oLibContainer)
+	Dim oLib as Object
+	Dim oLibDialog as Object
+	Dim oRuntimeDialog as Object
+	If IsMissing(oLibContainer ) then
+		oLibContainer = DialogLibraries
+	End If
+	oLibContainer.LoadLibrary(LibName)
+	oLib = oLibContainer.GetByName(Libname)
+	oLibDialog = oLib.GetByName(DialogName)
+	oRuntimeDialog = CreateUnoDialog(oLibDialog)
+	LoadDialog() = oRuntimeDialog
+End Function
+
+sub setPrefOnLoad(options)
+
+	oCbFontSize = dlgChooseSurah.GetControl(&quot;cbFontSize&quot;)
+	ocNewLine = dlgChooseSurah.GetControl(&quot;ocNewLine&quot;)
+	ocbQuran = dlgChooseSurah.GetControl(&quot;cbQuran&quot;)
+	ocbTrans = dlgChooseSurah.GetControl(&quot;cbTrans&quot;)
+
+	transFile=options(0)
+	oCbFontSize.text=options(1)
+	ocbQuran.State=options(2)
+	ocbTrans.State=options(3)
+	ocNewLine.State=options(4)
+end sub
+
+&apos;Displaying a Dialog
+Sub dlgAboutDisplay
+	dlgAbout = loadDialog(&quot;QIOO&quot;, &quot;dlgAbout&quot;)
+	dlgAbout.Execute()
+	
+end sub
+
+
+Sub dlgSurahDisplay
+	dlgChooseSurah = LoadDialog(&quot;QIOO&quot;, &quot;DlgChooseSurah&quot;)
+	buildAyatMenu()
+	setPrefOnLoad(readOption())
+	dlgChooseSurah.Execute()
+	
+end sub
+
+Sub dlgSurahOnlyDisplay
+	dlgChooseSurah = LoadDialog(&quot;QIOO&quot;, &quot;DlgChooseSurah&quot;)
+	buildAyatMenu()
+	setPrefOnLoad(readOption())
+
+	ocbQuran = dlgChooseSurah.GetControl(&quot;cbQuran&quot;)
+	ocbTrans = dlgChooseSurah.GetControl(&quot;cbTrans&quot;)
+	ocbQuran.State=1
+	ocbTrans.State=0
+	
+	dlgChooseSurah.Execute()
+	
+end sub
+
+
+Sub dlgSurahTransOnlyDisplay
+	dlgChooseSurah = LoadDialog(&quot;QIOO&quot;, &quot;DlgChooseSurah&quot;)
+	buildAyatMenu()
+	setPrefOnLoad(readOption())
+
+	ocbQuran = dlgChooseSurah.GetControl(&quot;cbQuran&quot;)
+	ocbTrans = dlgChooseSurah.GetControl(&quot;cbTrans&quot;)
+	ocbQuran.State=0
+	ocbTrans.State=1
+	
+	dlgChooseSurah.Execute()
+	
+end sub
+
+Sub dlgSurahTransDisplay
+	dlgChooseSurah = LoadDialog(&quot;QIOO&quot;, &quot;DlgChooseSurah&quot;)
+	buildAyatMenu()
+	setPrefOnLoad(readOption())
+	ocbQuran = dlgChooseSurah.GetControl(&quot;cbQuran&quot;)
+	ocbTrans = dlgChooseSurah.GetControl(&quot;cbTrans&quot;)
+	ocbQuran.State=1
+	ocbTrans.State=1
+
+	dlgChooseSurah.Execute()
+	
+end sub
+
+
+Sub dlgSurahOKBtn
+	&apos;get selection data
+	dlgChooseSurahModel = dlgChooseSurah.Model
+	oCbSurat = dlgChooseSurah.GetControl(&quot;cbSurat&quot;)
+	oCbAyatBegin = dlgChooseSurah.GetControl(&quot;cbAyatBegin&quot;)
+	oCbAyatEnd = dlgChooseSurah.GetControl(&quot;cbAyatEnd&quot;)
+	oCbFontSize = dlgChooseSurah.GetControl(&quot;cbFontSize&quot;)
+	ocNewLine = dlgChooseSurah.GetControl(&quot;ocNewLine&quot;)
+	ocbQuran = dlgChooseSurah.GetControl(&quot;cbQuran&quot;)
+	ocbTrans = dlgChooseSurah.GetControl(&quot;cbTrans&quot;)
+	
+	&apos;oCbSurat = Form.GetbyName(&quot;cbSurat&quot;)
+	strSurat = oCbSurat.Text 
+	strAyatBegin = oCbAyatBegin.Text 
+	strAyatEnd  = oCbAyatEnd.Text 
+	strFontSize = oCbFontSize.Text 
+
+	&apos;close dialog
+	dlgChooseSurah.Endexecute()
+
+	displayQuranInDoc(strSurat,strAyatBegin,strAyatEnd,strFontSize,ocNewLine.state,ocbQuran.state,ocbTrans.state)	
+end sub
+
+Sub dlgSurahCancelBtn
+
+	rem close dialog
+	dlgChooseSurah.Endexecute()
+
+end sub
+
+sub displayQuranInDoc(strSurat as String,strAyatBegin as String,strAyatEnd as String,strFontSize as String,newLine,quran,trans)
+	rem TODO: save existing font name and size then recover after paste
+	listCount = val(strAyatEnd) - val(strAyatBegin)
+
+	if listCount = 0 then
+		listCount=1
+	end if
+
+	dim listAyat(listCount) as String
+	dim listAyatTrans(listCount) as String
+	
+	if (quran) then
+		listAyat=getAyatList(strSurat,strAyatBegin,strAyatEnd)
+	end if
+	
+	if (trans) then
+		listAyatTrans=getAyatTransList(strSurat,strAyatBegin,strAyatEnd)
+	end if
+	
+	dim begin as integer
+	begin =strAyatBegin
+	for i = 0 to listCount
+			
+		if (i=listCount) then
+			last = 1
+		else 
+			last=0
+		end if
+		
+		if (quran and listAyat(i)&lt;&gt;&quot;&quot;) then
+			insertSimpleText(listAyat(i),strFontSize, begin,newLine,0,last)
+		end if
+		
+		if (trans and listAyatTrans(i)&lt;&gt;&quot;&quot;) then
+			insertSimpleText(listAyatTrans(i),strFontSize, begin,newLine,1,last)
+		end if
+		
+		begin= begin +1
+	
+	next
+	
+end sub 
+
+Sub insertSimpleText(s$,strFontSize$, lNum,newLine,trans,last)
+	
+	Dim oText As Object
+	Dim oViewCursor As Object
+	Dim oTextCursor As Object
+	dim args2(2) as new com.sun.star.beans.PropertyValue
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+			
+	if (newLine=1) then
+
+		rem ----------------------------------------------------------------------
+		args2(0).Name = &quot;FontHeight.Height&quot;
+		args2(0).Value = Val(strFontSize)
+		args2(1).Name = &quot;FontHeight.Prop&quot;
+		args2(1).Value = 100
+		args2(2).Name = &quot;FontHeight.Diff&quot;
+		args2(2).Value = 0
+		
+		dispatcher.executeDispatch(document, &quot;.uno:FontHeight&quot;, &quot;&quot;, 0, args2())
+	end if
+
+	if(trans=1) then
+	
+		dim argst(0) as new com.sun.star.beans.PropertyValue
+		argst(0).Name = &quot;ParaLeftToRight&quot;
+		argst(0).Value = true
+		
+		dispatcher.executeDispatch(document, &quot;.uno:ParaLeftToRight&quot;, &quot;&quot;, 0, argst())
+		
+	if (newLine=1) then
+		args1(0).Name = &quot;RightPara&quot;
+		args1(0).Value = true
+		
+		dispatcher.executeDispatch(document, &quot;.uno:RightPara&quot;, &quot;&quot;, 0, args1())
+	end if	
+		dim argsn(0) as new com.sun.star.beans.PropertyValue
+		argsn(0).Name = &quot;Text&quot;
+		argsn(0).Value = chr(20)+&quot;(&quot;+lNum+&quot;)&quot;+chr(20)
+		
+		dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, argsn())
+	end if
+	
+	rem ----------------------------------------------------------------------
+	args2(0).Name = &quot;Symbols&quot;
+	args2(0).Value = s
+	args2(1).Name = &quot;FontName&quot;
+	args2(1).Value = &quot;Scheherazade&quot;
+	args2(2).Name = &quot;FontHeight.Height&quot;
+	args2(2).Value = Val(strFontSize)
+
+	dispatcher.executeDispatch(document, &quot;.uno:InsertSymbol&quot;, &quot;&quot;, 0, args2())
+	
+	if(trans=0) then
+		displayNumber(dispatcher,document,lnum,newLine,trans,strFontSize)	
+	end if
+
+	rem ----------------------------------------------------------------------
+	if (newLine=1) then
+		dispatcher.executeDispatch(document, &quot;.uno:InsertPara&quot;, &quot;&quot;, 0, Array())
+
+		rem ----------------------------------------------------------------------
+	
+		dim args3(0) as new com.sun.star.beans.PropertyValue
+		args3(0).Name = &quot;LeftPara&quot;
+		args3(0).Value = true
+		
+		dispatcher.executeDispatch(document, &quot;.uno:LeftPara&quot;, &quot;&quot;, 0, args3())
+	end if 
+
+End Sub
+
+sub displayNumber(dispatcher,document,lnum,newline,trans)
+	lPrnt=chr(64831)
+	rPrnt=chr(64830)
+	numberStr=number(lNum)
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;ParaRightToLeft&quot;
+	args1(0).Value = true
+	
+	dispatcher.executeDispatch(document, &quot;.uno:ParaRightToLeft&quot;, &quot;&quot;, 0, args1())
+	rem ----------------------------------------------------------------------
+	dim args2(3) as new com.sun.star.beans.PropertyValue
+	
+	args2(0).Name = &quot;Symbols&quot;
+	args2(0).Value = chr(20)+lPrnt+numberStr+rPrnt+chr(20)
+	args2(1).Name = &quot;FontName&quot;
+	args2(1).Value = &quot;Scheherazade&quot;
+	args2(2).Name = &quot;FontHeight.Height&quot;
+	args2(2).Value = Val(strFontSize)
+
+	dispatcher.executeDispatch(document, &quot;.uno:InsertSymbol&quot;, &quot;&quot;, 0, args2())
+end sub
+
+sub buildAyatMenu
+	rem TODO: read file once only
+	dlgChooseSurahModel = dlgChooseSurah.Model
+	oCbSurat = dlgChooseSurah.GetControl(&quot;cbSurat&quot;)
+	oCbSurat.addItems(readAyatMenu,0)
+	rem ???
+	oCbSurat.removeItems (0, 1)
+	changeAyatInfo()
+end sub
+
+sub changeAyatInfo
+	dim maxAyat as integer
+	dlgChooseSurahModel = dlgChooseSurah.Model
+	oCbSurat = dlgChooseSurah.GetControl(&quot;cbSurat&quot;)
+	oCbAyatBegin = dlgChooseSurah.GetControl(&quot;cbAyatBegin&quot;)
+	oCbAyatEnd = dlgChooseSurah.GetControl(&quot;cbAyatEnd&quot;)
+
+	rem clear menu first
+	oCbAyatBegin.removeItems (0, 10000)
+	oCbAyatEnd.removeItems (0, 10000)
+
+	rem oCbAyatBegin.Text =&quot;1&quot;
+	ayatSelected = oCbSurat.Text
+	charFind = InStr(1, ayatSelected, &quot;.&quot;)
+	maxAyat = ayatInfoCount(val(left(ayatSelected,charFind-1)) + 1
+	
+	Dim menuPosSurat(maxAyat) as String
+	
+	for i = 1 to maxAyat 
+		menuPosSurat(i) = i 
+	next
+	
+	oCbAyatBegin.addItems(menuPosSurat,0)
+	oCbAyatBegin.removeItems (0, 1)
+	oCbAyatEnd.addItems(menuPosSurat,0)
+	oCbAyatEnd.removeItems (0, 1)
+	
+end sub
+
+sub onSelectSurahRange
+	dim maxAyat as integer
+	dlgChooseSurahModel = dlgChooseSurah.Model
+	oCbSurat = dlgChooseSurah.GetControl(&quot;cbSurat&quot;)
+	oCbAyatBegin = dlgChooseSurah.GetControl(&quot;cbAyatBegin&quot;)
+	oCbAyatEnd = dlgChooseSurah.GetControl(&quot;cbAyatEnd&quot;)
+	
+	ayatBegin= val(oCbAyatBegin.Text)
+	ayatEnd=val(oCbAyatEnd.Text)
+		
+	ayatSelected = oCbSurat.Text
+	charFind = InStr(1, ayatSelected, &quot;.&quot;)
+	maxAyat = ayatInfoCount(val(left(ayatSelected,charFind-1)) + 1
+			
+	
+	&apos;ayat end must be same with ayatBegin
+	&apos;list of avaible ayat decreased
+	oCbAyatEnd.removeItems (0, 10000)
+	
+	Dim menu(maxAyat) as String
+	dim pos as integer
+
+	pos=0
+	for i = ayatBegin to maxAyat
+		menu(pos) = i 
+		pos=pos+1
+	next
+	
+	oCbAyatEnd.Text=oCbAyatBegin.Text
+	oCbAyatEnd.addItems(menu,0)
+	oCbAyatEnd.removeItems (0, 1)
+	
+end sub
+
+function number(lNum)
+	&apos;convert to string
+	dim numStr as String
+	numStr =cstr(lNum)
+	cntStr = len(numStr)
+	dim nAr as String
+	 
+	&apos;loop as len
+	nAr=&quot;&quot;
+	cNum=0
+	for i= 1 to cntStr
+		cNum = 1632 + cInt(mid(numStr,i,1))
+		nAr = nAr+chr(cNum)		
+	next
+ 
+	&apos;convert
+	number =nAr	
+end function
+
+</script:module>

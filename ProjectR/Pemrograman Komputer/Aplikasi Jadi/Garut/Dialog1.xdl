@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dlg:window PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "dialog.dtd">
+<dlg:window xmlns:dlg="http://openoffice.org/2000/dialog" xmlns:script="http://openoffice.org/2000/script" dlg:id="Dialog1" dlg:left="92" dlg:top="43" dlg:width="123" dlg:height="141" dlg:closeable="true" dlg:moveable="true">
+ <dlg:bulletinboard>
+  <dlg:button dlg:id="CommandButton1" dlg:tab-index="0" dlg:left="-4" dlg:top="122" dlg:width="39" dlg:height="12" dlg:value="Keluar" dlg:button-type="cancel">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module6.closex?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton2" dlg:tab-index="1" dlg:left="75" dlg:top="122" dlg:width="39" dlg:height="12" dlg:value="Kembali">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module2.tampilan?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton4" dlg:tab-index="2" dlg:left="-2" dlg:top="3" dlg:width="52" dlg:height="23" dlg:value="Data Kunjungan Pasien" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module2.menujukedatakunjunganpasien?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton3" dlg:tab-index="3" dlg:left="24" dlg:top="30" dlg:width="52" dlg:height="23" dlg:value="Rekap Kunjungan Pasien" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module2.rekaphasil?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton5" dlg:tab-index="4" dlg:left="28" dlg:top="88" dlg:width="52" dlg:height="23" dlg:value="Input Data Manual" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module2.datapu?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton6" dlg:tab-index="5" dlg:left="59" dlg:top="3" dlg:width="52" dlg:height="23" dlg:value="Input Data Kunjungan Pasien" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module2.menujukedatapasien?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton7" dlg:tab-index="6" dlg:left="-4" dlg:top="59" dlg:width="34" dlg:height="23" dlg:value="Input Data Polisi" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module2.inputpolisi?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton8" dlg:tab-index="7" dlg:left="37" dlg:top="59" dlg:width="34" dlg:height="23" dlg:value="Input Data PNS" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module2.Inputpns?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton15" dlg:tab-index="8" dlg:left="79" dlg:top="59" dlg:width="34" dlg:height="23" dlg:value="Input Data Umum" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module2.inputumum?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+ </dlg:bulletinboard>
+</dlg:window>

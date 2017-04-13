@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dlg:window PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "dialog.dtd">
+<dlg:window xmlns:dlg="http://openoffice.org/2000/dialog" xmlns:script="http://openoffice.org/2000/script" dlg:style-id="1" dlg:id="Dialog1" dlg:left="150" dlg:top="150" dlg:width="220" dlg:height="125" dlg:closeable="true" dlg:moveable="true" dlg:title="IDAMAN SIMPANG TIGA">
+ <dlg:styles>
+  <dlg:style dlg:style-id="0" dlg:background-color="0xcccc"/>
+  <dlg:style dlg:style-id="1" dlg:background-color="0xffff99"/>
+ </dlg:styles>
+ <dlg:bulletinboard>
+  <dlg:button dlg:id="CommandButton1" dlg:tab-index="0" dlg:left="186" dlg:top="87" dlg:width="30" dlg:height="30" dlg:value="Keluar Dialog" dlg:button-type="cancel" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module6.closex?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton2" dlg:tab-index="1" dlg:left="149" dlg:top="88" dlg:width="30" dlg:height="30" dlg:value="Kembali">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.tampilanu?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton4" dlg:tab-index="2" dlg:left="5" dlg:top="11" dlg:width="50" dlg:height="30" dlg:value="Pulsa Elektrik" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.masukvn?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton3" dlg:tab-index="3" dlg:left="112" dlg:top="11" dlg:width="50" dlg:height="30" dlg:value="PPOB" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.masukob?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton5" dlg:tab-index="4" dlg:left="111" dlg:top="51" dlg:width="50" dlg:height="30" dlg:value="Kantin" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.masukbd?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton6" dlg:tab-index="5" dlg:left="59" dlg:top="11" dlg:width="50" dlg:height="30" dlg:value="Voucher &amp; Kartu Perdana" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.masukkp?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton7" dlg:tab-index="6" dlg:left="4" dlg:top="51" dlg:width="50" dlg:height="30" dlg:value="Warnet" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.masukjw?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton8" dlg:tab-index="7" dlg:left="58" dlg:top="51" dlg:width="50" dlg:height="30" dlg:value="Jasa Laundry" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.masukjl?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton15" dlg:tab-index="8" dlg:left="166" dlg:top="11" dlg:width="50" dlg:height="30" dlg:value="Indomog" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.masukindo?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton9" dlg:tab-index="9" dlg:left="165" dlg:top="51" dlg:width="50" dlg:height="30" dlg:value="Kas Masuk Keluar" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.masukkmk?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+ </dlg:bulletinboard>
+</dlg:window>

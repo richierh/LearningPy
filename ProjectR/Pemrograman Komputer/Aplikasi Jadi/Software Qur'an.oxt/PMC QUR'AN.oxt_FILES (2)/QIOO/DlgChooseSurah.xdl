@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dlg:window PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "dialog.dtd">
+<dlg:window xmlns:dlg="http://openoffice.org/2000/dialog" xmlns:script="http://openoffice.org/2000/script" dlg:style-id="1" dlg:id="DlgChooseSurah" dlg:left="133" dlg:top="66" dlg:width="96" dlg:height="118" dlg:closeable="true" dlg:moveable="true" dlg:title="PMC Softwares">
+ <dlg:styles>
+  <dlg:style dlg:style-id="0" dlg:background-color="0xffff99"/>
+  <dlg:style dlg:style-id="1" dlg:background-color="0x99ff66"/>
+ </dlg:styles>
+ <dlg:bulletinboard>
+  <dlg:text dlg:id="Label1" dlg:tab-index="0" dlg:left="5" dlg:top="27" dlg:width="32" dlg:height="13" dlg:value="Surat"/>
+  <dlg:text dlg:id="Label2" dlg:tab-index="2" dlg:left="5" dlg:top="41" dlg:width="22" dlg:height="19" dlg:value="Ayat"/>
+  <dlg:text dlg:id="Label3" dlg:tab-index="4" dlg:left="60" dlg:top="41" dlg:width="9" dlg:height="11" dlg:value="s/d"/>
+  <dlg:text dlg:id="Label4" dlg:tab-index="6" dlg:left="5" dlg:top="54" dlg:width="28" dlg:height="15" dlg:value="Font Size"/>
+  <dlg:button dlg:id="CommandButton1" dlg:tab-index="8" dlg:left="3" dlg:top="100" dlg:width="39" dlg:height="13" dlg:value="OK">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:QIOO.Qioo.dlgSurahOKBtn?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:combobox dlg:id="cbSurat" dlg:tab-index="1" dlg:left="40" dlg:top="27" dlg:width="51" dlg:height="11" dlg:value="1. &quot;Al Faatihah&quot;" dlg:spin="true">
+   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:QIOO.Qioo.changeAyatInfo?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:combobox>
+  <dlg:combobox dlg:id="cbAyatBegin" dlg:tab-index="3" dlg:left="40" dlg:top="41" dlg:width="20" dlg:height="11" dlg:value="1" dlg:spin="true">
+   <script:event script:event-name="on-itemstatechange" script:macro-name="vnd.sun.star.script:QIOO.Qioo.onSelectSurahRange?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:combobox>
+  <dlg:combobox dlg:id="cbAyatEnd" dlg:tab-index="5" dlg:left="70" dlg:top="40" dlg:width="20" dlg:height="11" dlg:value="1" dlg:spin="true"/>
+  <dlg:combobox dlg:id="cbFontSize" dlg:tab-index="7" dlg:left="40" dlg:top="54" dlg:width="20" dlg:height="9" dlg:value="20" dlg:spin="true">
+   <dlg:menupopup>
+    <dlg:menuitem dlg:value="8"/>
+    <dlg:menuitem dlg:value="9"/>
+    <dlg:menuitem dlg:value="10"/>
+    <dlg:menuitem dlg:value="12"/>
+    <dlg:menuitem dlg:value="14"/>
+    <dlg:menuitem dlg:value="16"/>
+    <dlg:menuitem dlg:value="18"/>
+    <dlg:menuitem dlg:value="20"/>
+    <dlg:menuitem dlg:value="25"/>
+    <dlg:menuitem dlg:value="30"/>
+   </dlg:menupopup>
+  </dlg:combobox>
+  <dlg:checkbox dlg:id="ocNewLine" dlg:tab-index="9" dlg:left="5" dlg:top="85" dlg:width="34" dlg:height="9" dlg:value="New Line" dlg:checked="true"/>
+  <dlg:checkbox dlg:id="cbQuran" dlg:tab-index="10" dlg:left="5" dlg:top="72" dlg:width="34" dlg:height="9" dlg:value="Qur&apos;an" dlg:checked="true"/>
+  <dlg:checkbox dlg:id="cbTrans" dlg:tab-index="11" dlg:left="41" dlg:top="72" dlg:width="34" dlg:height="9" dlg:value="Translation" dlg:checked="false"/>
+  <dlg:button dlg:id="btnCancel" dlg:tab-index="12" dlg:left="49" dlg:top="100" dlg:width="39" dlg:height="13" dlg:value="Cancel">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:QIOO.Qioo.dlgSurahCancelBtn?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:text dlg:style-id="0" dlg:id="Label5" dlg:tab-index="13" dlg:left="4" dlg:top="1" dlg:width="86" dlg:height="21" dlg:value="PMC SOFTWARES EDITION" dlg:align="center" dlg:valign="center"/>
+ </dlg:bulletinboard>
+</dlg:window>

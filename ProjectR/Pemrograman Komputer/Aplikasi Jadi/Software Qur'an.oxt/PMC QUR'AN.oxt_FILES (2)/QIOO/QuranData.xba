@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="QuranData" script:language="StarBasic">REM  *****  BASIC  *****
+rem TODO: file resource path method
+
+Const hostPath= &quot;QIOO&quot;
+Const quranFile = &quot;/res/quran-text.txt&quot;
+Const translateIndoFile = &quot;/res/indonesian.txt&quot;
+Const quranMenu = &quot;/res/index.csv&quot;
+Const countAyat = 114
+Dim namaAyat(countAyat) as String
+Dim infoAyat(countAyat) as String
+Dim ayatStart(countAyat) as Integer
+
+Sub Main
+
+End Sub
+
+function getPackageLocation()
+  oPIP = GetDefaultContext().getByName( _
+    &quot;/singletons/com.sun.star.deployment.PackageInformationProvider&quot;)
+  GetPackageLocation= oPIP.getPackageLocation(&quot;vnd.basicaddonbuilder.qioo&quot;)
+End function
+
+function getAyat(strSurat as String,strAyatBegin as String,strAyatEnd as String)	
+	getAyat = searchFileAyat(strSurat, strAyatBegin ,strAyatEnd)
+end function
+
+function getAyatList(strSurat as String,strAyatBegin as String,strAyatEnd as String)	
+	getAyatList= searchFileAyatList(strSurat, strAyatBegin ,strAyatEnd)
+end function
+
+function getAyatTransList(strSurat as String,strAyatBegin as String,strAyatEnd as String)	
+	getAyatTransList= searchFileTransList(strSurat, strAyatBegin ,strAyatEnd)
+end function
+
+
+function searchFileAyatList(strSurat as String,strAyatBegin as String,strAyatEnd as String)
+	quranFileStr=getPackageLocation &amp; &quot;/&quot; &amp; hostPath &amp; quranFile
+	searchFileAyatList = readfile(strSurat ,strAyatBegin,strAyatEnd, quranFileStr )
+end function
+
+function searchFileTransList(strSurat as String,strAyatBegin as String,strAyatEnd as String)
+
+	if (not (transFile=&quot;&quot;) and not (transFile=&quot;Default Indonesia Translation&quot;)) then
+		translateFile = transFile
+	else
+		translateFile=getPackageLocation &amp; &quot;/&quot; &amp; hostPath &amp; translateIndoFile
+	end if
+
+	searchFileTransList = readfile(strSurat ,strAyatBegin,strAyatEnd, translateFile )
+end function
+
+function readFile(strSurat as String,strAyatBegin as String,strAyatEnd as String,strFilename as String)
+	Dim FileNo As Integer
+	Dim CurrentLine As String
+	Dim File As String
+	Dim Msg as String
+	rem  Define filename
+	rem TODO: pathfinding
+	filename = strFilename
+
+	rem Establish free file handle
+	FileNo = Freefile
+	rem Open file (reading mode)
+	Open Filename For Input As FileNo
+	rem Check whether file end has been reached
+	
+	Dim lineFeed as Integer
+	Dim readBegin as Integer
+	Dim readEnd as Integer
+	charFind = InStr(1, strSurat, &quot;.&quot;)
+	if (charFind&gt;0) then
+		lineAyat = val(left(strSurat,charFind-1)) 
+	else
+		lineAyat = strSurat
+	end if
+
+	readBegin = val(strAyatBegin)+ayatStart(lineAyat)
+	readEnd = val(strAyatEnd)+ayatStart(lineAyat)
+	
+	listCount = val(strAyatEnd) - val(strAyatBegin)
+	
+	if listCount = 0 then
+		listCount=1
+	end if
+	
+	dim listAyat( listCount) as String
+		
+	
+	Dim myTextFile As Object, sf As Object, fileStream As Object
+	Dim aLineOfText As String, myFilePath As String
+	
+	
+	sf = createUnoService(&quot;com.sun.star.ucb.SimpleFileAccess&quot;)
+	On Error Goto 0
+
+	fileStream = sf.openFileRead(Filename)
+	myTextFile = createUnoService(&quot;com.sun.star.io.TextInputStream&quot;)
+	myTextFile.InputStream = fileStream
+&apos;	myTextFile.Encoding = &quot;ISO-8859-15&quot;
+
+	&apos;B Marcelly to read encoded text, modified slightly
+	lineFeed =1
+	pos = 0
+	Do while (not myTextFile.IsEOF and  not (lineFeed&gt;readEnd))
+		aLineOfText = myTextFile.readLine
+		&apos;MsgBox(aLineOfText)
+		
+		If aLineOfText &lt;&gt;&quot;&quot; and (lineFeed&gt;=readBegin) then
+			
+			listAyat(pos)= aLineOfText
+			pos=pos+1
+			
+		end if
+		
+		lineFeed=lineFeed + 1
+
+	Loop
+	
+	fileStream.closeInput
+	myTextFile.closeInput
+	On Error Goto 0
+	
+	readFile = listAyat
+end function
+
+function readAyatMenu()
+
+	Dim FileNo As Integer
+	Dim CurrentLine As String
+	Dim File As String
+	Dim Msg as String
+	Dim menuAyat(countAyat) as string
+	
+	rem  Define filename
+	rem TODO: pathfinding
+	
+	Filename = getPackageLocation() &amp; &quot;/&quot; &amp; hostPath &amp; quranMenu
+	rem Establish free file handle
+	FileNo = Freefile
+	rem Open file (reading mode)
+	Open Filename For Input As FileNo
+	rem Check whether file end has been reached
+	
+	Dim lineFeed as Integer	
+	Dim charFind as integer
+	Dim lenStr as Integer
+	lineFeed =1
+	ayatStart(1)=0
+	
+	Do While not eof(FileNo)
+		rem ’ Read line
+		Line Input #FileNo, CurrentLine
+		If CurrentLine &lt;&gt;&quot;&quot; then
+			rem parse
+			charFind = InStr(1, CurrentLine, &quot;;&quot;)		
+			lenStr = Len(CurrentLine)
+			rem insert to menu
+			menuAyat(lineFeed) = lineFeed &amp; &quot;. &quot; &amp; mid(CurrentLine,charFind+1)
+			
+			rem insert to ayat info
+			infoAyat(lineFeed) = Val(Left(CurrentLine,charFind-1))
+			
+			rem calculate ayat start point
+			if lineFeed &gt; 1 then
+				ayatStart(lineFeed) = ayatStart(lineFeed-1) + val(infoAyat(lineFeed-1))
+			end if 
+			
+		end if
+		
+		lineFeed=lineFeed + 1
+	Loop
+	
+	rem Close file
+	Close #FileNo
+	
+	readAyatMenu = menuAyat
+end function
+
+
+
+function ayatInfoCount(pos as integer)
+	ayatInfoCount = infoAyat(pos-1)
+end function
+
+</script:module>

@@ -1,0 +1,60 @@
+coding basic dialeg
+
+
+sub kadaluarsa
+
+if ( tgl hari ini > tgl kadaluarsa ) then
+
+message ( dokumen tertutup)
+
+else
+
+message (masih bisa dipakai)
+
+end if
+
+end sub
+
+rem --------------------------------------------------------------
+
+sub tidakbisaprosesaktivasi
+
+if (tgl hari ini > tgl kadaluarsa ) then
+
+msgbox (tidak bisa aktivasi)
+
+else
+msgbox (masih bisa dipakai)
+end if
+end sub
+
+
+rem -------------------------------------------------------//
+
+sub masaaktiflisensi
+
+L =  doc.sheets().getcellrangebyname ("A1")
+select case tglkode = L
+
+case tglkode = 0
+msgbox ()
+
+case tglkode = 1
+msgbox ()
+
+case tglkode = 2
+msgbox ()
+
+end select
+
+end sub
+
+
+
+
+
+
+
+
+
+
