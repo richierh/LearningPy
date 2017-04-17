@@ -14,7 +14,7 @@ import wx
 class MyDialog(wx.Dialog):
     def __init__(self, *args, **kwds):
         # begin wxGlade: MyDialog.__init__
-        kwds["style"] = wx.DEFAULT_DIALOG_STYLE
+        kwds["style"] = wx.CLOSE_BOX
         wx.Dialog.__init__(self, *args, **kwds)
         self.button_7 = wx.Button(self, wx.ID_ANY, "button_7")
         self.button_8 = wx.Button(self, wx.ID_ANY, "button_7")
