@@ -67,7 +67,7 @@ class MyFrame(wx.Frame):
         self.__do_layout()
 
         self.Bind(wx.EVT_BUTTON, self.Input, self.button_2)
-        self.Bind(wx.EVT_BUTTON, self.open_pilihan_lainnya, self.button_6)
+        self.Button_6.Bind(wx.EVT_BUTTON, self.open_pilihan_lainnya, self.button_6)
         # end wxGlade
 
     def __set_properties(self):
