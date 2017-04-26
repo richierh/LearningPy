@@ -11,6 +11,7 @@ import gettext
 # end wxGlade
 
 # begin wxGlade: extracode
+from event import *
 # end wxGlade
 
 
