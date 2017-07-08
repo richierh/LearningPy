@@ -1,0 +1,40 @@
+﻿Catatan :
+File yang akan diinstall adalah sebagai berikut :
+- LibreOfficePortable_5.0.2_MultilingualStandard.paf.exe
+- Jportable_8_Update_66.paf.exe
+
+Kedua file diatas digunakan sebagai pendukung dari software/aplikasi buatan PMC. Dengan kata lain, tanpa ada dukungan dari software diatas maka aplikasi buatan PMC tidak bisa dipakai.
+
+Terdapat 2 Jenis prosedur instalasi aplikasi pendukung software tersebut. 
+
+A. Jenis Pertama 
+Apabila file dalam bentuk format.EXE
+
+Berikut  ini adalah Prosedur Instalasi Aplikasi Pendukung Software :
+1.	Taruh file LibreOfficePortable_5.0.2_MultilingualStandard.paf.exe di Local D:/, –-- klik    LibreOfficePortable_5.0.2_MultilingualStandard.paf.exe ----ikuti instruksi sesuai dengan panduan yang muncul di lancar (klik next sampai selesai).
+
+2.	Setelah LibreOfficePortable_5.0.2_MultilingualStandard.paf.exe berhasil diinstall, maka akan ada sebuah Folder dengan nama 'LibreOffice Portable' atau yang sejenisnya di Local D:/ tersebut
+ 
+3.	Taruh File 'Jportable_8_Update_66.paf.exe' didalam Folder bernama 'java' yang berada didalam Folder ' LibreOffice Portable' , lalu klik file  'Jportable_8_Update_66.paf.exe' , ikuti instruksinya sampai dengan selesai dengan mengklik 'Next'.(Pada saat proses instalasi, usahakan untuk mengarahkan/melokasikan file instalasi di folder 'java' yang terletak di dalam Folder 'LibreOffice Portable')
+
+4.	Pasang Extension Java tersebut ke dalam file LibreOffice Launcher, yaitu dengan cara membuka aplikasi Libreoffice Launcher.exe ( Yang ada di folder 'LibreOffice Portable'). Setelah Aplikasi terbuka, pilih Menu  Tools ---- Options , dan akan muncul tampilan halaman , pilih Security --- Macro seccurity , lalu pilih 'Low (Not Recommended)'
+
+5.	Selanjutnya, pilih kembali Tools-----Options , akan muncul tampilan halaman, pilih 'Advance' Lalu klik / pilih  / beri centang  'Oracle Coorperation' atau bisa juga ' Jre _8…' keduanya berfungsi sama saja.
+
+6.	Selesai
+
+B. Jenis Kedua
+Apabila file dalam bentuk format ZIP atau RAR.
+ 
+Berikut  ini adalah Prosedur Instalasi Aplikasi Pendukung Software :
+
+1.	Taruh File – LibreOfficePortable_5.0.2_MultilingualStandard.paf.exe -. di local D:/ , lalu extract
+
+2.	Taruh File – Jportable_8_Update_66.paf.exe di dalam folder Java yang berada di Libreoffice Portable, lalu Extract file tersebut.
+
+4.	Pasang Extension Java tersebut ke dalam file LibreOffice Launcher, yaitu dengan cara membuka aplikasi Libreoffice Launcher.exe ( Yang ada di folder 'LibreOffice Portable'). Setelah Aplikasi terbuka, pilih Menu  Tools ---- Options , dan akan muncul tampilan halaman , pilih Security --- Macro seccurity , lalu pilih 'Low (Not Recommended)'
+
+5.	Selanjutnya, pilih kembali Tools-----Options , akan muncul tampilan halaman, pilih 'Advance' Lalu klik / pilih  / beri centang  'Oracle Coorperation' atau bisa juga ' Jre _8…' keduanya berfungsi sama saja.
+
+6.	Selesai
+

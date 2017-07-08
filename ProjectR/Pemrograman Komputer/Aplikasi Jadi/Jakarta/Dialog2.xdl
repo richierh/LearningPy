@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dlg:window PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "dialog.dtd">
+<dlg:window xmlns:dlg="http://openoffice.org/2000/dialog" xmlns:script="http://openoffice.org/2000/script" dlg:style-id="1" dlg:id="Dialog2" dlg:left="150" dlg:top="130" dlg:width="116" dlg:height="125" dlg:closeable="true" dlg:moveable="true" dlg:title="IDAMAN SIMPANG TIGA">
+ <dlg:styles>
+  <dlg:style dlg:style-id="0" dlg:background-color="0x99ff66"/>
+  <dlg:style dlg:style-id="1" dlg:background-color="0xff3333"/>
+ </dlg:styles>
+ <dlg:bulletinboard>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton1" dlg:tab-index="0" dlg:left="4" dlg:top="6" dlg:width="50" dlg:height="30" dlg:value="Laporan Utama" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.datalaporanu?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton2" dlg:tab-index="1" dlg:left="60" dlg:top="6" dlg:width="50" dlg:height="30" dlg:value="Laporan Penjualan" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.datalaporana?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton3" dlg:tab-index="2" dlg:left="5" dlg:top="41" dlg:width="50" dlg:height="30" dlg:value="Pengaturan" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.dinput?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:style-id="0" dlg:id="CommandButton4" dlg:tab-index="3" dlg:left="60" dlg:top="40" dlg:width="50" dlg:height="30" dlg:value="Pengaturan Admin" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.aturdataad?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton5" dlg:tab-index="4" dlg:left="80" dlg:top="93" dlg:width="30" dlg:height="30" dlg:value="Keluar Dialog" dlg:button-type="cancel" dlg:multiline="true">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:Standard.Module6.closex?language=Basic&amp;location=document" script:language="Script"/>
+  </dlg:button>
+  <dlg:button dlg:id="CommandButton6" dlg:tab-index="5" dlg:left="43" dlg:top="93" dlg:width="30" dlg:height="30" dlg:value="Kembali">
+   <script:event script:event-name="on-performaction" script:macro-name="vnd.sun.star.script:jkt1.Module1.tampilanu?language=Basic&amp;location=application" script:language="Script"/>
+  </dlg:button>
+ </dlg:bulletinboard>
+</dlg:window>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Filter" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Main
+
+End Sub
+
+Sub UseAnAdvancedFilter()
+  Dim oSheet     &apos;A sheet from the Calc document.
+  Dim oRanges    &apos;The NamedRanges property.
+  Dim oCritRange &apos;Range that contains the filter criteria.
+  Dim oDataRange &apos;Range that contains the data to filter.
+  Dim oFiltDesc  &apos;Filter descriptor.
+ 
+  REM Range that contains the filter criteria
+  oSheet = ThisComponent.getSheets().getByIndex(1)
+  oCritRange = oSheet.getCellRangeByName(&quot;A1:G3&quot;)
+ 
+  REM You can also obtain the range containing the 
+  REM filter criteria from a named range.
+  REM oRanges = ThisComponent.NamedRanges
+  REM oRange = oRanges.getByName(&quot;AverageLess80&quot;)
+  REM oCritRange = oRange.getReferredCells()
+ 
+  REM The data that I want to filter
+  oSheet = ThisComponent.getSheets().getByIndex(0)
+  oDataRange = oSheet.getCellRangeByName(&quot;$A$1:$K$1000&quot;)
+ 
+  oFiltDesc = oCritRange.createFilterDescriptorByObject(oDataRange)
+  oDataRange.filter(oFiltDesc)
+End Sub
+
+
+sub Filterdatarecor
+rem ----------------------------------------------------------------------
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem ----------------------------------------------------------------------
+dim args1(0) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;ToPoint&quot;
+args1(0).Value = &quot;$A$1&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args1())
+
+rem ----------------------------------------------------------------------
+dim args2(0) as new com.sun.star.beans.PropertyValue
+args2(0).Name = &quot;ToPoint&quot;
+args2(0).Value = &quot;DATA BARANG.$A$1:$K$18&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args2())
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:Copy&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:DataFilterSpecialFilter&quot;, &quot;&quot;, 0, Array())
+dim args4(0) as new com.sun.star.beans.PropertyValue
+args4(0).Name = &quot;ToPoint&quot;
+args4(0).Value = &quot;Sheet7.$A$1&quot;
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:FilterExecute&quot;, &quot;&quot;, 0, Array())
+
+rem ----------------------------------------------------------------------
+dim args6(0) as new com.sun.star.beans.PropertyValue
+args6(0).Name = &quot;ToPoint&quot;
+args6(0).Value = &quot;$M$2&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args6())
+
+
+end sub
+</script:module>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Refresh" script:language="StarBasic">REM  *****  BASIC  *****
+
+
+Sub refreshAllSheetLinks()
+   oEnum = thisComponent.SheetLinks.createEnumeration
+   while oEnum.hasMoreElements
+      oLink = oEnum.NextElement
+      oLink.refresh
+   wend
+   rem define variables
+dim document   as object
+dim dispatcher as object
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:DataAreaRefresh&quot;, &quot;&quot;, 0, Array())
+   
+End Sub 
+ 
+Sub refresh
+    ThisComponent.store()
+End Sub
+
+Sub refresh_DATA_Range
+oRange = ThisComponent.DatabaseRanges.getByName(&quot;PENJUALAN_CHIP&quot;)
+oRange.refresh()
+
+end sub
+
+</script:module>

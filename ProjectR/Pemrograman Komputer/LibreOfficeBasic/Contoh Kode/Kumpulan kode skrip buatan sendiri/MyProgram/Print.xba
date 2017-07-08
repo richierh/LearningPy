@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Print" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Main
+
+End Sub
+
+Sub Open2PreviewReport_100(oEvent As Object)
+
+    Dim RptName as string
+
+   &apos;the name of the report I want to open
+
+    RptName = &quot;PENJUALAN&quot;
+
+    ThisDatabaseDocument.ReportDocuments.getByName(RptName).open 
+
+End Sub
+
+
+sub PrintRecord
+rem ----------------------------------------------------------------------
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem ----------------------------------------------------------------------
+dispatcher.executeDispatch(document, &quot;.uno:PrintPreview&quot;, &quot;&quot;, 0, Array())
+
+
+end sub
+</script:module>

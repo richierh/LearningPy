@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="PINDAHSHEET" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Main
+
+End Sub
+
+Sub Show_Data_Barang
+rem ----------------------------------------------------------------------
+rem define variables
+dim document   as object
+dim dispatcher as object
+dim Pindah as Object
+rem ----------------------------------------------------------------------
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+rem-------------------------------Show Data Barang
+dim args1(0) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;aTableName&quot;
+args1(0).Value = &quot;DATA BARANG&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:Show&quot;, &quot;&quot;, 0, args1())
+
+rem moving to DATA BARANG and point to A2:J:2
+dim args10(0) as new com.sun.star.beans.PropertyValue
+args10(0).Name = &quot;ToPoint&quot;
+args10(0).Value= &quot;DATA BARANG.$A$1&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args10())
+
+End Sub
+
+Sub Show_Data_Chip
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem-------------------------------Show Data Barang
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+dim args1(0) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;aTableName&quot;
+args1(0).Value = &quot;DATA CHIP&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:Show&quot;, &quot;&quot;, 0, args1())
+rem moving to DATA BARANG and point to A2:J:2
+dim args10(0) as new com.sun.star.beans.PropertyValue
+args10(0).Name = &quot;ToPoint&quot;
+args10(0).Value= &quot;DATA CHIP.$A$1&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args10())
+
+End Sub
+
+Sub Show_Tampilan_Antar_Muka
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+dim args1(0) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;aTableName&quot;
+args1(0).Value = &quot;TAMPILAN ANTAR MUKA&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:Show&quot;, &quot;&quot;, 0, args1())
+rem moving to DATA BARANG and point to A2:J:2
+dim args10(0) as new com.sun.star.beans.PropertyValue
+args10(0).Name = &quot;ToPoint&quot;
+args10(0).Value= &quot;TAMPILAN ANTAR MUKA.$A$1&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args10())
+
+End Sub
+
+
+Sub Show_Penjualan_Chip
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem-------------------------------Show Data Barang
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+dim args1(0) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;aTableName&quot;
+args1(0).Value = &quot;PENJUALAN CHIP&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:Show&quot;, &quot;&quot;, 0, args1())
+rem moving to DATA BARANG and point to A2:J:2
+dim args10(0) as new com.sun.star.beans.PropertyValue
+args10(0).Name = &quot;ToPoint&quot;
+args10(0).Value= &quot;PENJUALAN CHIP.$A$1&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args10())
+
+End Sub
+
+Sub Show_Penjualan_Barang
+rem define variables
+dim document   as object
+dim dispatcher as object
+rem-------------------------------Show Data Barang
+rem get access to the document
+document   = ThisComponent.CurrentController.Frame
+dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+dim args1(0) as new com.sun.star.beans.PropertyValue
+args1(0).Name = &quot;aTableName&quot;
+args1(0).Value = &quot;PENJUALAN BARANG&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:Show&quot;, &quot;&quot;, 0, args1())
+rem moving to DATA BARANG and point to A2:J:2
+dim args10(0) as new com.sun.star.beans.PropertyValue
+args10(0).Name = &quot;ToPoint&quot;
+args10(0).Value= &quot;PENJUALAN BARANG.$A$1&quot;
+
+dispatcher.executeDispatch(document, &quot;.uno:GoToCell&quot;, &quot;&quot;, 0, args10())
+
+End Sub
+
+</script:module>

@@ -1,0 +1,9 @@
+#!usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import mGui
+import wx
+
+def __init__():
+    c = mGui.MyFrame(None, wx.ID_ANY, "")
+    c.Show()

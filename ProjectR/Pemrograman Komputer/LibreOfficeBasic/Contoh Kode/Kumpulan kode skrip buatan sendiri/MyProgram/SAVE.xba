@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="SAVE" script:language="StarBasic">REM  *****  BASIC  *****
+
+Sub Main
+
+End Sub
+
+    Sub SaveAs
+
+       Dim sFileName As String
+       Dim sPath As String
+       Dim sSaveToURL as string
+       
+       
+       sPath = &quot;D:\&quot;
+       sFileName = thisComponent.getSheets.getByName(&quot;DATA BARANG&quot;).getCellRangeByName(&quot;A2:K1000&quot;).getString
+       sSaveToURL = ConvertToURL(sPath &amp; sFileName)
+       thisComponent.storeToUrl(sSaveToURL, Array(MakePropertyValue(&quot;FilterName&quot;, &quot;Calc8&quot;)))
+       
+    End Sub
+
+    Function MakePropertyValue(Optional sName As String, Optional sValue) As com.sun.star.beans.PropertyValue
+    &apos;-------------------------------------------------------------------
+    &apos; Create and return a new com.sun.star.beans.PropertyValue
+    &apos;-------------------------------------------------------------------
+
+        Dim oPropertyValue As New com.sun.star.beans.PropertyValue
+       
+       
+        If Not IsMissing(sName) Then
+           oPropertyValue.Name = sName
+        EndIf
+       
+        If Not IsMissing(sValue) Then
+           oPropertyValue.Value = sValue
+        EndIf
+       
+        MakePropertyValue() = oPropertyValue
+
+    End Function
+
+</script:module>

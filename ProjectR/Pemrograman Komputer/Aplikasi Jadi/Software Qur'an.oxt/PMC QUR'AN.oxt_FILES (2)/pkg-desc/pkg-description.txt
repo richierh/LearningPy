@@ -1,0 +1,6 @@
+QIOO-0.4b.oxt
+Qur'an in OpenOffice, Created By IPBS(issotyo@gmail.com) 
+
+Qur'an in OpenOffice extension for Writer. Don't forget to enabled CTL(Complex Text Layout).
+(Tools->Option->Language Settings->Languages->Enabled for complex text layout)
+
