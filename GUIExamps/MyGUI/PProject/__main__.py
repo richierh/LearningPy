@@ -1,7 +1,7 @@
 #!usr/bin/python
 import wx
+from Module import *
 from Module.gui import MyFrame 
-
 
 #class MainFrame(gui.MyFrame):
 #    def __init__(self,*args,**kwds):

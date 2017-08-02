@@ -1,2 +1,4 @@
+activeuserprofiles=Team;pmc-desktop;richie-H61H2-M13
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=pmc
+useridperkey=pmc-desktop.Local\=pmc;
