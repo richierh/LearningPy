@@ -1,36 +1,39 @@
 -- VERSION_4
 -- START DISKCACHE_2
 /home/richie/mygit/LearningPy/GUIExamps/MyGUI/.metadata/.plugins/org.eclipse.core.resources/.projects/PProject/com.python.pydev.analysis/v2_indexcache
-__main__|1501681402288193000|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/__main__.py
+__main__|1501681500228189000|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/__main__.py
+Module.GuipythonMyFrame|1501681373636194000|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/GuipythonMyFrame.py
 Module.__init__|1501681249008200000|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/__init__.py
-Module.gui|1501681417844192000|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/gui.py
+Module.gui|1501681520444188000|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/gui.py
 Module.frame|1501680196068247000|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/frame.py
 -- END DISKCACHE
 -- START DICTIONARY
-8
-4=__main__
-6=MyFrame2
-8=MyFrame2.__init__
+10
+5=__main__
+7=MyFrame2
+10=MyFrame2.__init__
+2=Module.GuipythonMyFrame
+8=GuipythonMyFrame
 1=Module.__init__
-5=MyFrame
-7=MyFrame.__init__
-3=Module.gui
-2=Module.frame
+6=MyFrame
+9=MyFrame.__init__
+4=Module.gui
+3=Module.frame
 -- END DICTIONARY
 -- START TREE 1
 5
 __a|1|__all__!11@
-gui|0|
-myf|3|MyFrame2!17@MyFrame!17@MyFrame!25@
-roo|1|root!35@
-win|1|winframe!35@
+gui|1|GuipythonMyFrame!17@
+myf|3|MyFrame2!25@MyFrame!25@MyFrame!33@
+roo|1|root!43@
+win|1|winframe!43@
 -- END TREE
 -- START TREE 2
 6
-__d|2|__del__!5&18@__del__!6&18@
-__i|3|__init__!5&18@__init__!6&18@__init__!5&26@
-m_b|2|m_button2!7&19@m_button1!7&19@
-m_p|4|m_panel8!7&19@m_panel6!7&19@m_panel4!7&19@m_panel4!8&19@
-m_s|7|m_staticText1!7&19@m_staticText3!7&19@m_staticText5!7&19@m_staticText7!7&19@m_staticText2!7&19@m_staticText4!7&19@m_staticText6!7&19@
-m_t|6|m_textCtrl6!7&19@m_textCtrl4!7&19@m_textCtrl3!7&19@m_textCtrl1!7&19@m_textCtrl5!7&19@m_textCtrl2!7&19@
+__d|2|__del__!6&26@__del__!7&26@
+__i|4|__init__!6&26@__init__!7&26@__init__!6&34@__init__!8&18@
+m_b|2|m_button2!9&27@m_button1!9&27@
+m_p|4|m_panel8!9&27@m_panel6!9&27@m_panel4!9&27@m_panel4!10&27@
+m_s|7|m_staticText1!9&27@m_staticText3!9&27@m_staticText5!9&27@m_staticText7!9&27@m_staticText2!9&27@m_staticText4!9&27@m_staticText6!9&27@
+m_t|6|m_textCtrl6!9&27@m_textCtrl4!9&27@m_textCtrl3!9&27@m_textCtrl1!9&27@m_textCtrl5!9&27@m_textCtrl2!9&27@
 -- END TREE
