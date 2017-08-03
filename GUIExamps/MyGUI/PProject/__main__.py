@@ -13,4 +13,3 @@ if __name__=="__main__":
     winframe = MyFrame(None)
     winframe.Show()
     root.MainLoop()
-    
