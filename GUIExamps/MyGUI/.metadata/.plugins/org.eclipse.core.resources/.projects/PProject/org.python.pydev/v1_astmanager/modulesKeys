@@ -1,6 +1,10 @@
 MODULES_MANAGER_V2
+<<<<<<< HEAD
 Module.GuipythonMyFrame|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/GuipythonMyFrame.py
 Module.__init__|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/__init__.py
 Module.frame|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/frame.py
 Module.gui|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/gui.py
 __main__|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/__main__.py
+=======
+Module.__init__|/home/pmc/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/__init__.py
+>>>>>>> d51134f280a16c8cdce592eef1c3bc0ffdcf34f9

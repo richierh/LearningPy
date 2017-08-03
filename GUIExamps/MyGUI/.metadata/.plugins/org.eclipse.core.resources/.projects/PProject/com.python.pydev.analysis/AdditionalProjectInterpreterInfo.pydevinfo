@@ -1,5 +1,6 @@
 -- VERSION_4
 -- START DISKCACHE_2
+<<<<<<< HEAD
 /home/richie/mygit/LearningPy/GUIExamps/MyGUI/.metadata/.plugins/org.eclipse.core.resources/.projects/PProject/com.python.pydev.analysis/v2_indexcache
 __main__|1501681500228189000|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/__main__.py
 Module.GuipythonMyFrame|1501681373636194000|/home/richie/mygit/LearningPy/GUIExamps/MyGUI/PProject/Module/GuipythonMyFrame.py
@@ -36,4 +37,16 @@ m_b|2|m_button2!9&27@m_button1!9&27@
 m_p|4|m_panel8!9&27@m_panel6!9&27@m_panel4!9&27@m_panel4!10&27@
 m_s|7|m_staticText1!9&27@m_staticText3!9&27@m_staticText5!9&27@m_staticText7!9&27@m_staticText2!9&27@m_staticText4!9&27@m_staticText6!9&27@
 m_t|6|m_textCtrl6!9&27@m_textCtrl4!9&27@m_textCtrl3!9&27@m_textCtrl1!9&27@m_textCtrl5!9&27@m_textCtrl2!9&27@
+=======
+/home/pmc/mygit/LearningPy/GUIExamps/MyGUI/.metadata/.plugins/org.eclipse.core.resources/.projects/PProject/com.python.pydev.analysis/v2_indexcache
+-- END DISKCACHE
+-- START DICTIONARY
+0
+-- END DICTIONARY
+-- START TREE 1
+0
+-- END TREE
+-- START TREE 2
+0
+>>>>>>> d51134f280a16c8cdce592eef1c3bc0ffdcf34f9
 -- END TREE
