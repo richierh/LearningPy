@@ -1,13 +1,18 @@
-
+#! /usr/bin/python
 import wx
+import gettext
+from mainframe.form import* 
 
-class frame():
-    
-
-if __name__=="__main__":
-    root = wx.App()
-    frame = wx.Frame(None)
-    frame.Show(True)
-    root.MainLoop()
+class MyApp(wx.App):
+    def OnInit(self):
+        self.frame = MyFrame1(None)
+        self.SetTopWindow(self.frame)
+        self.frame.Show()
+        return True
 
 
+if __name__ == "__main__":
+    gettext.install("app") # replace with the appropriate catalog name
+
+    app = MyApp(0)
+    app.MainLoop()
