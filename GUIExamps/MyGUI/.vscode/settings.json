@@ -3,6 +3,7 @@
     "python.pythonPath": "/home/richie/.virtualenvs/phoenix/bin/python",
     "python.autoComplete.extraPaths": [
     "/home/richie/mygit/LearningPy/GUIExamps/MyGUI/mainframe",
-    "/home/richie/mygit/LearningPy/GUIExamps/MyGUI" ]
+    "/home/richie/mygit/LearningPy/GUIExamps/MyGUI",
+    "/home/richie/mygit/LearningPy/GUIExamps/MyGUI/controller" ]
 
 }

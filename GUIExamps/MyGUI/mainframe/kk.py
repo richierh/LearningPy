@@ -6,4 +6,7 @@ class size(wx.Frame):
         print ("hello")
         self.SetSizeHints( wx.Size( 500,300 ), wx.DefaultSize )
         print ("hello")
-        self.aku=""
+        self.aku()
+    
+    def aku(self):
+        return print ("hallggo")

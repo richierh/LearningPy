@@ -2,6 +2,7 @@
 import wx
 import gettext
 import mainframe.form
+import controller
 
 
 class MyApp(wx.App):
