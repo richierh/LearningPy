@@ -1,6 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "python.pythonPath": "/home/richie/.virtualenvs/phoenix/bin/python",
+    "python.pythonPath": "/home/richie/.virtualenvs/first/bin/python",
     "python.unitTest.unittestArgs": [
         "-v",
         "-s",
