@@ -1,9 +1,7 @@
-// Place your settings in this file to overwrite default and user settings.
 {
-    "python.pythonPath": "/home/richie/.virtualenvs/phoenix/bin/python",
-    "python.autoComplete.extraPaths": [
-    "/home/richie/mygit/LearningPy/GUIExamps/MyGUI/mainframe",
-    "/home/richie/mygit/LearningPy/GUIExamps/MyGUI",
-    "/home/richie/mygit/LearningPy/GUIExamps/MyGUI/controller" ]
-
+    "python.pythonPath": "/home/pmc/.virtualenvs/ormpony/bin/python"
+    ,"python.autoComplete.extraPaths": [
+        "/home/pmc/mygit/LearningPy/GUIExamps/MyGUI/",
+        "/home/pmc/mygit/LearningPy/GUIExamps/MyGUI/mainframe/"
+    ],"
 }
