@@ -1,16 +1,22 @@
 #!/usr/bin/python
+"""
+Berisi tentang proses input data dari GUI ke databases dengan membuat
+sebuah class bernama TabelForm
+"""
 
 from pony import *
 from pony.orm import *
+import connection
 
 import pony
 
-class TabelForm():
+class TabelForm(connection.connectdb):
     """
-    TabelForm saat database dimasukkan dari GUI ke database
+    TabelForm saat database dimasukkan dari GUI ke databases
     """
-    def __init__(self,dataformulir):
-        self.dataformulir=dataformulir
+    def __init__(self,*args,**kwds):
+        super(TabelForm,self).__init__()
+        self.dataformulir=mylist
         self.data(self.dataformulir)
         return None
   
