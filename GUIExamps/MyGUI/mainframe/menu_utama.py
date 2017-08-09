@@ -10,6 +10,7 @@
 from mainframe.icons.koleksigambar import lokasigambar
 import wx
 import wx.xrc
+import wx.richtext
 
 ###########################################################################
 ## Class FUtama
@@ -98,9 +99,33 @@ class FUtama ( wx.Frame ):
 		self.Layout()
 		
 		self.Centre( wx.BOTH )
+		
+		# Connect Events
+		self.m_button1.Bind( wx.EVT_BUTTON, self.m_button1OnButtonClick )
+		self.m_button2.Bind( wx.EVT_BUTTON, self.m_button2OnButtonClick )
+		self.m_button3.Bind( wx.EVT_BUTTON, self.m_button3OnButtonClick )
+		self.m_button4.Bind( wx.EVT_BUTTON, self.m_button4OnButtonClick )
+		self.m_button5.Bind( wx.EVT_BUTTON, self.m_button5OnButtonClick )
 	
 	def __del__( self ):
 		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def m_button1OnButtonClick( self, event ):
+		event.Skip()
+	
+	def m_button2OnButtonClick( self, event ):
+		event.Skip()
+	
+	def m_button3OnButtonClick( self, event ):
+		event.Skip()
+	
+	def m_button4OnButtonClick( self, event ):
+		event.Skip()
+	
+	def m_button5OnButtonClick( self, event ):
+		event.Skip()
 	
 
 ###########################################################################
@@ -205,6 +230,89 @@ class FForm ( wx.Frame ):
 		self.Layout()
 		
 		self.Centre( wx.BOTH )
+		
+		# Connect Events
+		self.m_textCtrl1.Bind( wx.EVT_TEXT, self.m_textCtrl1OnText )
+		self.m_textCtrl2.Bind( wx.EVT_TEXT, self.m_textCtrl2OnText )
+		self.m_textCtrl3.Bind( wx.EVT_TEXT, self.m_textCtrl3OnText )
+		self.m_textCtrl4.Bind( wx.EVT_TEXT, self.m_textCtrl4OnText )
+		self.m_textCtrl5.Bind( wx.EVT_TEXT, self.m_textCtrl5OnText )
+		self.m_textCtrl6.Bind( wx.EVT_TEXT, self.m_textCtrl6OnText )
+		self.m_button1.Bind( wx.EVT_BUTTON, self.m_button1OnButtonClick )
+		self.m_button2.Bind( wx.EVT_BUTTON, self.m_button2OnButtonClick )
+	
+	def __del__( self ):
+		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def m_textCtrl1OnText( self, event ):
+		event.Skip()
+	
+	def m_textCtrl2OnText( self, event ):
+		event.Skip()
+	
+	def m_textCtrl3OnText( self, event ):
+		event.Skip()
+	
+	def m_textCtrl4OnText( self, event ):
+		event.Skip()
+	
+	def m_textCtrl5OnText( self, event ):
+		event.Skip()
+	
+	def m_textCtrl6OnText( self, event ):
+		event.Skip()
+	
+	def m_button1OnButtonClick( self, event ):
+		event.Skip()
+	
+	def m_button2OnButtonClick( self, event ):
+		event.Skip()
+	
+
+###########################################################################
+## Class MyPanel1
+###########################################################################
+
+class MyPanel1 ( wx.Panel ):
+	
+	def __init__( self, parent ):
+		wx.Panel.__init__ ( self, parent, id = wx.ID_ANY, pos = wx.DefaultPosition, size = wx.Size( 300,150 ), style = wx.TAB_TRAVERSAL )
+		
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOWTEXT ) )
+		
+		bSizer8 = wx.BoxSizer( wx.VERTICAL )
+		
+		
+		bSizer8.AddSpacer( ( 0, 10), 0, wx.EXPAND, 5 )
+		
+		self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"Apakah anda yakin ingin ingin melanjutkan?", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText9.Wrap( -1 )
+		self.m_staticText9.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_3DLIGHT ) )
+		
+		bSizer8.Add( self.m_staticText9, 1, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		
+		self.m_richText1 = wx.richtext.RichTextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0|wx.VSCROLL|wx.HSCROLL|wx.NO_BORDER|wx.WANTS_CHARS )
+		bSizer8.Add( self.m_richText1, 1, wx.EXPAND |wx.ALL, 5 )
+		
+		bSizer9 = wx.BoxSizer( wx.HORIZONTAL )
+		
+		self.m_button8 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer9.Add( self.m_button8, 0, wx.ALL, 5 )
+		
+		self.m_button9 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer9.Add( self.m_button9, 0, wx.ALL, 5 )
+		
+		self.m_button10 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer9.Add( self.m_button10, 0, wx.ALL, 5 )
+		
+		
+		bSizer8.Add( bSizer9, 1, wx.EXPAND, 5 )
+		
+		
+		self.SetSizer( bSizer8 )
+		self.Layout()
 	
 	def __del__( self ):
 		pass
