@@ -1,7 +1,7 @@
 {
-    "python.pythonPath": "/home/richie/.virtualenvs/ormpony/bin/python",
+    "python.pythonPath": "/home/pmc/.virtualenvs/ormpony/bin/python",
     "python.autoComplete.extraPaths": [
-        "/home/richie/mygit/LearningPy/GUIExamps/MyGUI/",
-        "/home/richie/mygit/LearningPy/GUIExamps/MyGUI/mainframe/"
+        "/home/pmc/mygit/LearningPy/GUIExamps/MyGUI/",
+        "/home/pmc/mygit/LearningPy/GUIExamps/MyGUI/mainframe/"
     ],"
 }
