@@ -1,5 +1,4 @@
 import wx
-from mainframe.menu_utama import*
 import mainframe.menu_utama
 
 
